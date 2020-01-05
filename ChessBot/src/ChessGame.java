@@ -11,8 +11,11 @@ import java.awt.*;
 import java.util.List;
 
 public class ChessGame extends JFrame{
+
     private JPanel jPanel;
     private JButton newGameButton;
+
+
 
 
     public ChessGame(){
@@ -21,24 +24,56 @@ public class ChessGame extends JFrame{
 
             @Override
             public void actionPerformed(ActionEvent e){
-                clearBoard();
+                createNewGame();
             }
         });
     }
 
     public static void main(String []args){
         JFrame jFrame = new JFrame("Chess Game: Made by Jared Chua");
-        jFrame.setPreferredSize(new Dimension(1200,1000));
+        jFrame.setPreferredSize(new Dimension(600,500));
         jFrame.setLocation(400,25);
         jFrame.setContentPane(new ChessGame().jPanel);
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jFrame.pack();
         jFrame.setVisible(true);
 
+
+
     }
 
-    public void clearBoard(){
-        
+    public void createNewGame(){
+        JFrame jframe = new JFrame("Chess");
+        jframe.setVisible(true);
+        jframe.setDefaultCloseOperation(jframe.DISPOSE_ON_CLOSE);
+        jframe.setSize(300,400);
+
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(8,8,1,1));
+
+        panel.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+        for(int x=0; x<8; x++){
+            for(int y=0; y<8; y++){
+                JButton jbutton = new JButton(x + "," + y);
+                if((x+y)%2==0) {
+                    jbutton.setBackground(Color.GRAY);
+                }
+                else{
+                    jbutton.setBackground(Color.WHITE);
+                }
+
+
+                jbutton
+                panel.add(jbutton);
+            }
+        }
+
+        jframe.add(panel);
+    }
+
+
+    public void doAnotherAction(){
+        System.out.println("ok world");
     }
 
 }

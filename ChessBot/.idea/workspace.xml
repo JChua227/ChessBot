@@ -2,12 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dddfbc49-8f15-41f5-ba19-8fdd95a02b3e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Decision/Move.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ChessBot/ChessGame$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ChessBot/ChessGame$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ChessBot/ChessGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ChessBot/ChessGame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ChessBot/META-INF/ChessBot.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ChessGame.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/ChessGame.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ChessBot/ChessGame$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ChessBot/ChessGame.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ChessGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ChessGame.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
