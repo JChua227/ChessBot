@@ -63,7 +63,7 @@ public class ChessGame extends JFrame{
                 }
 
 
-                jbutton
+                /*jbutton*/
                 panel.add(jbutton);
             }
         }

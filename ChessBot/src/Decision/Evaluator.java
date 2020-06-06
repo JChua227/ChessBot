@@ -2,9 +2,11 @@ package Decision;
 
 import Pieces.Piece;
 
+import java.util.List;
+
 public class Evaluator{
 
-    public Evaluator(){
+    public Evaluator(List<String> notation){
 
     }
 
@@ -30,4 +32,7 @@ public class Evaluator{
         }
         return pieceCountWorth;
     }
+
+
+
 }

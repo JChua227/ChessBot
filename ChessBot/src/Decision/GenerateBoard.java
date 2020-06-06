@@ -2,6 +2,8 @@ package Decision;
 
 import Pieces.*;
 
+import java.util.List;
+
 public class GenerateBoard{
 
     public GenerateBoard(){
@@ -55,6 +57,11 @@ public class GenerateBoard{
     public void fillKing(Piece [][]gameBoard){
         gameBoard[7][4] = new King(true);
         gameBoard[0][4] = new King(false);
+    }
+
+
+    public void playMoves(List<String> notation){
+
     }
 
 

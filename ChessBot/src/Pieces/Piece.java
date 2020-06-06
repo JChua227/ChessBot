@@ -1,11 +1,14 @@
 package Pieces;
 
+import Decision.Move;
+
 import java.util.*;
 
 public abstract class Piece{
 
     private boolean playerPiece;
     private int pieceWorth;
+    private boolean moved = false;
 
     public Piece(boolean playerPiece,int pieceWorth){
         this.playerPiece = playerPiece;
@@ -18,6 +21,14 @@ public abstract class Piece{
 
     public int getPieceWorth(){
         return this.pieceWorth;
+    }
+
+    public boolean getMoved(){
+        return this.moved;
+    }
+
+    public void setMoved(){
+        this.moved = true;
     }
 
     public Piece[][] copy(Piece [][]gameBoard){
@@ -53,5 +64,5 @@ public abstract class Piece{
         return temp;
     }
 
-    public abstract List<Piece[][]> getPossibleMoves(Piece[][] gameBoard, int x, int y);
+    public abstract List<Move> getPossibleMoves(Piece[][] gameBoard, int x, int y,List<String> notation);
 }

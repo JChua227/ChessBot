@@ -1,5 +1,7 @@
 package Pieces;
 
+import Decision.Move;
+
 import java.util.*;
 
 public class Pawn extends Piece{
@@ -13,20 +15,22 @@ public class Pawn extends Piece{
     }
 
     //TODO: get all possible moves for pawns
-    public List<Piece[][]> getPossibleMoves(Piece [][]gameBoard, int x, int y){
+    public List<Move> getPossibleMoves(Piece [][]gameBoard, int x, int y, List<String> notation){
         int forward = -1;
         if(!gameBoard[x][y].getPlayerPiece()){
             forward = 1;
         }
 
-        List<Piece[][]> list = new ArrayList<>();
+        List<Move> list = new ArrayList<>();
 
         if(x+forward>-1 && x+forward<gameBoard.length && gameBoard[x+forward][y]==null){
             Piece[][] possiblePosition = this.copy(gameBoard);
             Pawn pawn = new Pawn(gameBoard[x][y].getPlayerPiece());
+            pawn.setMoved();
             possiblePosition[x][y] = null;
             possiblePosition[x+forward][y] = pawn;
-            list.add(possiblePosition);
+            Move move = new Move(x, y, x+forward, y, possiblePosition);
+            list.add(move);
         }
 
 

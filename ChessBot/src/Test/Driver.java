@@ -1,6 +1,7 @@
 package Test;
 
 import Decision.GenerateBoard;
+import Decision.Move;
 import Pieces.Piece;
 
 import java.util.*;
@@ -11,6 +12,10 @@ public class Driver{
             //creates game
             GenerateBoard gb = new GenerateBoard();
             Piece [][]temp = gb.create();
+
+            //plays the current game moves
+            List<String> notation = new ArrayList<>();
+            gb.playMoves(notation);
             printBoard(temp);
 
             //gets board value
@@ -18,10 +23,10 @@ public class Driver{
             System.out.println(boardValue);
 
             //gets possible positions
-            List<Piece[][]> list = new ArrayList<>();
-            list = getAllPossiblePositions(temp,false);
+            List<Move> list = new ArrayList<>();
+            list = getAllPossiblePositions(temp,false,notation);
             for(int x=0; x<list.size(); x++){
-                printBoard(list.get(x));
+                printBoard(list.get(x).getGameState());
                 System.out.println("-----------------------------------------------------------------------------------------------------------");
             }
             System.out.println("List size: " + list.size());
@@ -31,12 +36,12 @@ public class Driver{
         }
     }
 
-    public static List<Piece[][]> getAllPossiblePositions(Piece[][]gameBoard,boolean player){
-        List<Piece[][]> list = new ArrayList<>();
+    public static List<Move> getAllPossiblePositions(Piece[][]gameBoard,boolean player,List<String> notation){
+        List<Move> list = new ArrayList<>();
         for(int x=0; x<gameBoard.length; x++){
             for(int y=0; y<gameBoard[0].length; y++){
                 if(gameBoard[x][y]!=null && player==gameBoard[x][y].getPlayerPiece()){
-                    list.addAll(gameBoard[x][y].getPossibleMoves(gameBoard,x,y));
+                    list.addAll(gameBoard[x][y].getPossibleMoves(gameBoard,x,y,notation));
                 }
             }
         }

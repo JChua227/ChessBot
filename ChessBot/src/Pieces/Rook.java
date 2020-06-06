@@ -1,5 +1,7 @@
 package Pieces;
 
+import Decision.Move;
+
 import java.util.*;
 
 public class Rook extends Piece{
@@ -12,24 +14,28 @@ public class Rook extends Piece{
         return getPlayerPiece() + "Rook";
     }
 
-    public List<Piece[][]> getPossibleMoves(Piece [][]gameBoard, int x, int y){
-        List<Piece[][]> list = new ArrayList<>();
+    public List<Move> getPossibleMoves(Piece [][]gameBoard, int x, int y, List<String> notation){
+        List<Move> list = new ArrayList<>();
 
         int xHolder = x+1;
         int yHolder = y;
         while(xHolder!=gameBoard.length && gameBoard[xHolder][yHolder]==null){
             Piece[][] possiblePosition = this.copy(gameBoard);
             Rook rook = new Rook(gameBoard[x][y].getPlayerPiece());
+            rook.setMoved();
             possiblePosition[x][y] = null;
             possiblePosition[xHolder][yHolder] = rook;
-            list.add(possiblePosition);
+            Move move = new Move(x, y, xHolder, yHolder, possiblePosition);
+            list.add(move);
             xHolder++;
             if(xHolder!=gameBoard.length && gameBoard[xHolder][yHolder]!=null && gameBoard[xHolder][yHolder].getPlayerPiece()!=gameBoard[x][y].getPlayerPiece()){
                 Piece[][] possibleTakePosition = this.copy(gameBoard);
                 Rook rookTake = new Rook(gameBoard[x][y].getPlayerPiece());
+                rookTake.setMoved();
                 possibleTakePosition[x][y] = null;
                 possibleTakePosition[xHolder][yHolder] = rookTake;
-                list.add(possibleTakePosition);
+                Move take = new Move(x, y, xHolder, yHolder, possiblePosition);
+                list.add(take);
             }
         }
 
@@ -38,16 +44,20 @@ public class Rook extends Piece{
         while(xHolder!=-1 && gameBoard[xHolder][yHolder]==null){
             Piece[][] possiblePosition = this.copy(gameBoard);
             Rook rook = new Rook(gameBoard[x][y].getPlayerPiece());
+            rook.setMoved();
             possiblePosition[x][y] = null;
             possiblePosition[xHolder][yHolder] = rook;
-            list.add(possiblePosition);
+            Move move = new Move(x, y, xHolder, yHolder, possiblePosition);
+            list.add(move);
             xHolder--;
             if(xHolder!=-1 && gameBoard[xHolder][yHolder]!=null && !gameBoard[xHolder][yHolder].getPlayerPiece()){
                 Piece[][] possibleTakePosition = this.copy(gameBoard);
                 Rook rookTake = new Rook(gameBoard[x][y].getPlayerPiece());
+                rookTake.setMoved();
                 possibleTakePosition[x][y] = null;
                 possibleTakePosition[xHolder][yHolder] = rookTake;
-                list.add(possibleTakePosition);
+                Move take = new Move(x, y, xHolder, yHolder, possiblePosition);
+                list.add(take);
             }
         }
 
@@ -56,16 +66,20 @@ public class Rook extends Piece{
         while(yHolder!=gameBoard[0].length && gameBoard[xHolder][yHolder]==null){
             Piece[][] possiblePosition = this.copy(gameBoard);
             Rook rook = new Rook(gameBoard[x][y].getPlayerPiece());
+            rook.setMoved();
             possiblePosition[x][y] = null;
             possiblePosition[xHolder][yHolder] = rook;
-            list.add(possiblePosition);
+            Move move = new Move(x, y, xHolder, yHolder, possiblePosition);
+            list.add(move);
             yHolder++;
             if(yHolder!=gameBoard[0].length && gameBoard[xHolder][yHolder]!=null && !gameBoard[xHolder][yHolder].getPlayerPiece()){
                 Piece[][] possibleTakePosition = this.copy(gameBoard);
                 Rook rookTake = new Rook(gameBoard[x][y].getPlayerPiece());
+                rookTake.setMoved();
                 possibleTakePosition[x][y] = null;
                 possibleTakePosition[xHolder][yHolder] = rookTake;
-                list.add(possibleTakePosition);
+                Move take = new Move(x, y, xHolder, yHolder, possiblePosition);
+                list.add(take);
             }
         }
 
@@ -74,16 +88,20 @@ public class Rook extends Piece{
         while(yHolder!=-1 && gameBoard[xHolder][yHolder]==null){
             Piece[][] possiblePosition = this.copy(gameBoard);
             Rook rook = new Rook(gameBoard[x][y].getPlayerPiece());
+            rook.setMoved();
             possiblePosition[x][y] = null;
             possiblePosition[xHolder][yHolder] = rook;
-            list.add(possiblePosition);
+            Move move = new Move(x, y, xHolder, yHolder, possiblePosition);
+            list.add(move);
             yHolder--;
             if(yHolder!=-1 && gameBoard[xHolder][yHolder]!=null && !gameBoard[xHolder][yHolder].getPlayerPiece()){
                 Piece[][] possibleTakePosition = this.copy(gameBoard);
                 Rook rookTake = new Rook(gameBoard[x][y].getPlayerPiece());
+                rookTake.setMoved();
                 possibleTakePosition[x][y] = null;
                 possibleTakePosition[xHolder][yHolder] = rookTake;
-                list.add(possibleTakePosition);
+                Move take = new Move(x, y, xHolder, yHolder, possiblePosition);
+                list.add(take);
             }
         }
         return list;
