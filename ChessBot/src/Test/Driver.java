@@ -11,20 +11,20 @@ public class Driver{
         try{
             //creates game
             GenerateBoard gb = new GenerateBoard();
-            Piece [][]temp = gb.create();
+            gb.create();
 
             //plays the current game moves
             List<String> notation = new ArrayList<>();
             gb.playMoves(notation);
-            printBoard(temp);
+            printBoard(gb.getGameBoard());
 
             //gets board value
-            double boardValue = (double)sumStaticPosition(temp)/10;
+            double boardValue = (double)sumStaticPosition(gb.getGameBoard())/10;
             System.out.println(boardValue);
 
             //gets possible positions
             List<Move> list = new ArrayList<>();
-            list = getAllPossiblePositions(temp,false,notation);
+            list = getAllPossiblePositions(gb.getGameBoard(),false,notation);
             for(int x=0; x<list.size(); x++){
                 printBoard(list.get(x).getGameState());
                 System.out.println("-----------------------------------------------------------------------------------------------------------");

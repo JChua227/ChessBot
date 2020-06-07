@@ -29,7 +29,8 @@ public class Pawn extends Piece{
             pawn.setMoved();
             possiblePosition[x][y] = null;
             possiblePosition[x+forward][y] = pawn;
-            Move move = new Move(x, y, x+forward, y, possiblePosition);
+            List<String> newNotation = this.generateNewNotation(notation, x, y, x+forward, y);
+            Move move = new Move(x, y, x+forward, y, possiblePosition, newNotation);
             list.add(move);
         }
 

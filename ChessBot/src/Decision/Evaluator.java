@@ -1,12 +1,13 @@
 package Decision;
 
+import Pieces.King;
 import Pieces.Piece;
 
 import java.util.List;
 
 public class Evaluator{
 
-    public Evaluator(List<String> notation){
+    public Evaluator(){
 
     }
 
@@ -33,6 +34,35 @@ public class Evaluator{
         return pieceCountWorth;
     }
 
+    public boolean gameIsFinished(Move move){
+        int kingCounter=0;
+        for(int x=0; x<move.getGameState().length; x++){
+            for(int y=0; y<move.getGameState()[0].length; y++){
+                if(move.getGameState()[x][y] instanceof King){
+                    kingCounter++;
+                }
+                if(kingCounter==2){
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+
+
+    public boolean checkWinner(Move move){
+        for(int x=0; x<move.getGameState().length; x++){
+            for(int y=0; y<move.getGameState()[0].length; y++){
+                if(move.getGameState()[x][y] instanceof King){
+                    return !move.getGameState()[x][y].getPlayerPiece();
+                }
+            }
+        }
+
+        //this statement should never be reached
+        return true;
+    }
 
 
 }

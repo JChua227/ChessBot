@@ -6,11 +6,18 @@ import java.util.List;
 
 public class GenerateBoard{
 
+    private Piece[][] gameBoard;
+    private static NotationConverter notationConverter = new NotationConverter();
+
     public GenerateBoard(){
 
     }
 
-    public Piece[][] create(){
+    public NotationConverter getNotationConverter(){
+        return this.notationConverter;
+    }
+
+    public void create(){
         Piece [][]gameBoard = new Piece[8][8];
         fillPawn(gameBoard);
         fillRook(gameBoard);
@@ -18,7 +25,11 @@ public class GenerateBoard{
         fillKnight(gameBoard);
         fillQueen(gameBoard);
         fillKing(gameBoard);
-        return gameBoard;
+        this.gameBoard = gameBoard;
+    }
+
+    public Piece[][] getGameBoard(){
+        return this.gameBoard;
     }
 
     public void fillPawn(Piece [][]gameBoard){

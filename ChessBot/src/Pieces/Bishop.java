@@ -26,7 +26,8 @@ public class Bishop extends Piece{
             bishop.setMoved();
             possiblePosition[x][y] = null;
             possiblePosition[xHolder][yHolder] = bishop;
-            Move move = new Move(x, y, xHolder, yHolder, possiblePosition);
+            List<String> newNotation = this.generateNewNotation(notation, x, y, xHolder, yHolder);
+            Move move = new Move(x, y, xHolder, yHolder, possiblePosition,newNotation);
             list.add(move);
             xHolder++;
             yHolder++;
@@ -36,7 +37,8 @@ public class Bishop extends Piece{
                 bishopTake.setMoved();
                 possibleTakePosition[x][y] = null;
                 possibleTakePosition[xHolder][yHolder] = bishopTake;
-                Move take = new Move(x, y, xHolder, yHolder, possiblePosition);
+                List<String> newNotation2 = this.generateNewNotation(notation, x, y, xHolder, yHolder);
+                Move take = new Move(x, y, xHolder, yHolder, possiblePosition,newNotation2);
                 list.add(take);
             }
         }
@@ -49,7 +51,8 @@ public class Bishop extends Piece{
             bishop.setMoved();
             possiblePosition[x][y] = null;
             possiblePosition[xHolder][yHolder] = bishop;
-            Move move = new Move(x, y, xHolder, yHolder, possiblePosition);
+            List<String> newNotation = this.generateNewNotation(notation, x, y, xHolder, yHolder);
+            Move move = new Move(x, y, xHolder, yHolder, possiblePosition,newNotation);
             list.add(move);
             xHolder--;
             yHolder--;
@@ -59,7 +62,8 @@ public class Bishop extends Piece{
                 bishopTake.setMoved();
                 possibleTakePosition[x][y] = null;
                 possibleTakePosition[xHolder][yHolder] = bishopTake;
-                Move take = new Move(x, y, xHolder, yHolder, possiblePosition);
+                List<String> newNotation2 = this.generateNewNotation(notation, x, y, xHolder, yHolder);
+                Move take = new Move(x, y, xHolder, yHolder, possiblePosition,newNotation2);
                 list.add(take);
             }
         }
@@ -72,7 +76,8 @@ public class Bishop extends Piece{
             bishop.setMoved();
             possiblePosition[x][y] = null;
             possiblePosition[xHolder][yHolder] = bishop;
-            Move move = new Move(x, y, xHolder, yHolder, possiblePosition);
+            List<String> newNotation = this.generateNewNotation(notation, x, y, xHolder, yHolder);
+            Move move = new Move(x, y, xHolder, yHolder, possiblePosition, newNotation);
             list.add(move);
             xHolder++;
             yHolder--;
@@ -82,7 +87,8 @@ public class Bishop extends Piece{
                 bishopTake.setMoved();
                 possibleTakePosition[x][y] = null;
                 possibleTakePosition[xHolder][yHolder] = bishopTake;
-                Move take = new Move(x, y, xHolder, yHolder, possiblePosition);
+                List<String> newNotation2 = this.generateNewNotation(notation, x, y, xHolder, yHolder);
+                Move take = new Move(x, y, xHolder, yHolder, possiblePosition,newNotation2);
                 list.add(take);
             }
         }
@@ -95,7 +101,8 @@ public class Bishop extends Piece{
             bishop.setMoved();
             possiblePosition[x][y] = null;
             possiblePosition[xHolder][yHolder] = bishop;
-            Move move = new Move(x, y, xHolder, yHolder, possiblePosition);
+            List<String> newNotation = this.generateNewNotation(notation, x, y, xHolder, yHolder);
+            Move move = new Move(x, y, xHolder, yHolder, possiblePosition, newNotation);
             list.add(move);
             xHolder--;
             yHolder++;
@@ -105,7 +112,8 @@ public class Bishop extends Piece{
                 bishopTake.setMoved();
                 possibleTakePosition[x][y] = null;
                 possibleTakePosition[xHolder][yHolder] = bishopTake;
-                Move take = new Move(x, y, xHolder, yHolder, possiblePosition);
+                List<String> newNotation2 = this.generateNewNotation(notation, x, y, xHolder, yHolder);
+                Move take = new Move(x, y, xHolder, yHolder, possiblePosition,newNotation2);
                 list.add(take);
             }
         }

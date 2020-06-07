@@ -15,7 +15,7 @@ public class Move {
     private int depth;
     private int extraTakePieceDepth = 0;
     private int evaluation;
-    private List<String> moveList = new ArrayList<>();
+    private List<String> moveList;
 
     public Move(int xSelectedPosition, int ySelectedPosition, int xLandedPosition, int yLandedPosition, Piece[][] gameState, int depth, int evaluation){
         this.xSelectedPosition = xSelectedPosition;
@@ -27,12 +27,13 @@ public class Move {
         this.evaluation = evaluation;
     }
 
-    public Move(int xSelectedPosition, int ySelectedPosition, int xLandedPosition, int yLandedPosition, Piece[][] gameState){
+    public Move(int xSelectedPosition, int ySelectedPosition, int xLandedPosition, int yLandedPosition, Piece[][] gameState,List<String> moveList){
         this.xSelectedPosition = xSelectedPosition;
         this.ySelectedPosition = ySelectedPosition;
         this.xLandedPosition = xLandedPosition;
         this.yLandedPosition = yLandedPosition;
         this.gameState = gameState;
+        this.moveList = moveList;
     }
 
     public Move(Piece[][] gameState, int evaluation){

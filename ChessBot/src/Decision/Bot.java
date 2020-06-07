@@ -8,9 +8,16 @@ import java.util.List;
 public class Bot {
 
     private Evaluator evaluator;
+    private GenerateBoard generateBoard = new GenerateBoard();
 
-    public Bot(List<String> notation){
-        evaluator = new Evaluator(notation);
+    public Bot(){
+        evaluator = new Evaluator();
+        generateBoard.create();
+    }
+
+    public Move getNextMove(List<String> notation){
+        generateBoard.playMoves(notation);
+        return miniMax();
     }
 
 
@@ -20,11 +27,13 @@ public class Bot {
             player = 2;
         }
 
-        if(evaluator.gameIsFinished(move,1)){
-            return new Move(move.getGameState(),100000,childX,childY);
-        }
-        else if(evaluator.gameIsFinished(move,2)){
-            return new Move(move.getGameState(),-100000,childX,childY);
+        if(evaluator.gameIsFinished(move)){
+            if(evaluator.checkWinner(move)){
+                return new Move(move.getGameState(),100000,childX,childY);
+            }
+            else{
+                return new Move(move.getGameState(),-100000,childX,childY);
+            }
         }
         else if(checkTie(move.getGameState())){
             return new Move(move.getGameState(),0,childX,childY,0);

@@ -1,6 +1,7 @@
 package Pieces;
 
 import Decision.Move;
+import Decision.NotationConverter;
 
 import java.util.*;
 
@@ -9,6 +10,7 @@ public abstract class Piece{
     private boolean playerPiece;
     private int pieceWorth;
     private boolean moved = false;
+    private static NotationConverter notationConverter = new NotationConverter();
 
     public Piece(boolean playerPiece,int pieceWorth){
         this.playerPiece = playerPiece;
@@ -29,6 +31,10 @@ public abstract class Piece{
 
     public void setMoved(){
         this.moved = true;
+    }
+
+    public NotationConverter getNotationConverter(){
+        return this.notationConverter;
     }
 
     public Piece[][] copy(Piece [][]gameBoard){
@@ -65,4 +71,11 @@ public abstract class Piece{
     }
 
     public abstract List<Move> getPossibleMoves(Piece[][] gameBoard, int x, int y,List<String> notation);
+
+    public List<String> generateNewNotation(List<String> notation, int x, int y, int xDestination, int yDestination){
+        List<String> list = new ArrayList<>();
+        list.addAll(notation);
+        list.add(getNotationConverter().getNotationSymbol(x) + y + "-" + getNotationConverter().getNotationSymbol(xDestination) + yDestination);
+        return list;
+    }
 }
