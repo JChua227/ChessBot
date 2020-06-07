@@ -27,6 +27,7 @@ public class Driver{
             list = getAllPossiblePositions(gb.getGameBoard(),false,notation);
             for(int x=0; x<list.size(); x++){
                 printBoard(list.get(x).getGameState());
+                System.out.println(list.get(x).getMoveList());
                 System.out.println("-----------------------------------------------------------------------------------------------------------");
             }
             System.out.println("List size: " + list.size());

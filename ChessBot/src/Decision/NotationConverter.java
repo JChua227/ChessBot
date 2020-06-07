@@ -5,25 +5,35 @@ import java.util.List;
 
 public class NotationConverter {
 
-    private List<Character> notationSymbol = new ArrayList<>();
+    private List<Character> notationColumn = new ArrayList<>();
+    private List<Integer> notationRow = new ArrayList<>();
 
     public NotationConverter(){
         populateNotationSymbol();
     }
 
     public void populateNotationSymbol(){
-        notationSymbol.add('a');
-        notationSymbol.add('b');
-        notationSymbol.add('c');
-        notationSymbol.add('d');
-        notationSymbol.add('e');
-        notationSymbol.add('f');
-        notationSymbol.add('g');
-        notationSymbol.add('h');
+        notationColumn.add('a');
+        notationColumn.add('b');
+        notationColumn.add('c');
+        notationColumn.add('d');
+        notationColumn.add('e');
+        notationColumn.add('f');
+        notationColumn.add('g');
+        notationColumn.add('h');
+
+        for(int x=8; x>0; x--){
+            notationRow.add(x);
+        }
+        System.out.println(notationRow);
     }
 
-    public Character getNotationSymbol(int x){
-        return this.notationSymbol.get(x);
+    public Character getNotationColumn(int y){
+        return this.notationColumn.get(y);
+    }
+
+    public int getNotationRow(int x){
+        return this.notationRow.get(x);
     }
 
 

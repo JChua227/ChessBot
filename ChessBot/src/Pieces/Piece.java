@@ -75,7 +75,8 @@ public abstract class Piece{
     public List<String> generateNewNotation(List<String> notation, int x, int y, int xDestination, int yDestination){
         List<String> list = new ArrayList<>();
         list.addAll(notation);
-        list.add(getNotationConverter().getNotationSymbol(x) + y + "-" + getNotationConverter().getNotationSymbol(xDestination) + yDestination);
+        System.out.println(x + " " + y + " " + xDestination + " " + yDestination);
+        list.add(getNotationConverter().getNotationColumn(y) + "" + getNotationConverter().getNotationRow(x) + "-" + getNotationConverter().getNotationColumn(yDestination) + getNotationConverter().getNotationRow(xDestination));
         return list;
     }
 }

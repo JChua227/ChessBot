@@ -15,13 +15,13 @@ public class Bot {
         generateBoard.create();
     }
 
-    public Move getNextMove(List<String> notation){
+    /*public Move getNextMove(List<String> notation){
         generateBoard.playMoves(notation);
         return miniMax();
-    }
+    }*/
 
 
-    public Move miniMax(Move move, int depth, boolean turn, int alpha, int beta, int childX, int childY){
+    /*public Move miniMax(Move move, int depth, boolean turn, int alpha, int beta, int childX, int childY){
         int player = 1;
         if(!turn){
             player = 2;
@@ -85,15 +85,15 @@ public class Bot {
             return minEval;
         }
 
-    }
+    }*/
 
 
-    public static List<Move> getAllPossiblePositions(Piece[][]gameBoard,boolean player){
+    public static List<Move> getAllPossiblePositions(Piece[][]gameBoard,boolean player,List<String> notation){
         List<Move> list = new ArrayList<>();
         for(int x=0; x<gameBoard.length; x++){
             for(int y=0; y<gameBoard[0].length; y++){
                 if(gameBoard[x][y]!=null && player==gameBoard[x][y].getPlayerPiece()){
-                    list.addAll(gameBoard[x][y].getPossibleMoves(gameBoard,x,y));
+                    list.addAll(gameBoard[x][y].getPossibleMoves(gameBoard, x, y, notation));
                 }
             }
         }
