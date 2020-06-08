@@ -17,6 +17,11 @@ public class Evaluator{
         return total;
     }
 
+    public Move evaluatePosition(Move move, String nextMove){
+        int evaluation = 0;
+        return new Move(move.getGameState(), evaluation, nextMove,move.getMoveList());
+    }
+
     public int sumStaticPosition(Piece [][]gameBoard){
         int pieceCountWorth = 0;
         for(int x=0; x<gameBoard.length; x++){
@@ -50,7 +55,6 @@ public class Evaluator{
         return true;
     }
 
-
     public boolean checkWinner(Move move){
         for(int x=0; x<move.getGameState().length; x++){
             for(int y=0; y<move.getGameState()[0].length; y++){
@@ -61,6 +65,20 @@ public class Evaluator{
         }
 
         //this statement should never be reached
+        return true;
+    }
+
+    public boolean checkTie(Piece[][] gameState){
+        for(int x=0; x<gameState.length; x++){
+            for(int y=0; y<gameState[0].length; y++){
+                if(gameState[x][y]!=null){
+                    if(!(gameState[x][y] instanceof King)){
+                        return false;
+                    }
+                }
+            }
+        }
+
         return true;
     }
 

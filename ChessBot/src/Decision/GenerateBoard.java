@@ -8,6 +8,7 @@ public class GenerateBoard{
 
     private Piece[][] gameBoard;
     private static NotationConverter notationConverter = new NotationConverter();
+    private List<String> notation;
 
     public GenerateBoard(){
 
@@ -72,7 +73,7 @@ public class GenerateBoard{
 
 
     public void playMoves(List<String> notation){
-
+        this.notation = notation;
     }
 
 

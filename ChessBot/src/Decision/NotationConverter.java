@@ -25,7 +25,6 @@ public class NotationConverter {
         for(int x=8; x>0; x--){
             notationRow.add(x);
         }
-        System.out.println(notationRow);
     }
 
     public Character getNotationColumn(int y){

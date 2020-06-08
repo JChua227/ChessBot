@@ -12,18 +12,17 @@ public class Move {
     private int xLandedPosition;
     private int yLandedPosition;
     private Piece[][] gameState;
-    private int depth;
     private int extraTakePieceDepth = 0;
     private int evaluation;
     private List<String> moveList;
+    private String nextMove;
 
-    public Move(int xSelectedPosition, int ySelectedPosition, int xLandedPosition, int yLandedPosition, Piece[][] gameState, int depth, int evaluation){
+    public Move(int xSelectedPosition, int ySelectedPosition, int xLandedPosition, int yLandedPosition, Piece[][] gameState, int evaluation){
         this.xSelectedPosition = xSelectedPosition;
         this.ySelectedPosition = ySelectedPosition;
         this.xLandedPosition = xLandedPosition;
         this.yLandedPosition = yLandedPosition;
         this.gameState = gameState;
-        this.depth = depth;
         this.evaluation = evaluation;
     }
 
@@ -36,9 +35,17 @@ public class Move {
         this.moveList = moveList;
     }
 
-    public Move(Piece[][] gameState, int evaluation){
+    public Move(Piece[][] gameState, int evaluation,String nextMove,List<String> moveList){
         this.gameState = gameState;
         this.evaluation = evaluation;
+        this.nextMove = nextMove;
+        this.moveList = moveList;
+    }
+
+    public Move(Piece[][] gameState, int evaluation,String nextMove){
+        this.gameState = gameState;
+        this.evaluation = evaluation;
+        this.nextMove = nextMove;
     }
 
     public int getXSelectedPosition(){
@@ -77,8 +84,8 @@ public class Move {
         return this.gameState;
     }
 
-    public int getDepth(){
-        return this.depth + this.extraTakePieceDepth;
+    public int getExtraTakePieceDepth(){
+        return this.extraTakePieceDepth;
     }
 
     public void incrementTakePieceDepth(){
@@ -91,6 +98,10 @@ public class Move {
 
     public void setMoveList(String s){
         this.moveList.add(s);
+    }
+
+    public String getNextMove(){
+        return this.nextMove;
     }
 
     public List<String> getMoveList(){

@@ -1,5 +1,6 @@
 package Test;
 
+import Decision.Bot;
 import Decision.GenerateBoard;
 import Decision.Move;
 import Pieces.Piece;
@@ -8,79 +9,16 @@ import java.util.*;
 
 public class Driver{
     public static void main(String []args){
-        try{
-            //creates game
-            GenerateBoard gb = new GenerateBoard();
-            gb.create();
 
-            //plays the current game moves
-            List<String> notation = new ArrayList<>();
-            gb.playMoves(notation);
-            printBoard(gb.getGameBoard());
+        List<String> list = new ArrayList<>();
+        Bot bot = new Bot();
+        Move move = bot.getNextMove(list,4);
 
-            //gets board value
-            double boardValue = (double)sumStaticPosition(gb.getGameBoard())/10;
-            System.out.println(boardValue);
+        bot.printBoard(move.getGameState());
+        System.out.println(move.getNextMove());
+        System.out.println("Evaluation: " + move.getEvaluation());
+        System.out.println(move.getMoveList());
 
-            //gets possible positions
-            List<Move> list = new ArrayList<>();
-            list = getAllPossiblePositions(gb.getGameBoard(),false,notation);
-            for(int x=0; x<list.size(); x++){
-                printBoard(list.get(x).getGameState());
-                System.out.println(list.get(x).getMoveList());
-                System.out.println("-----------------------------------------------------------------------------------------------------------");
-            }
-            System.out.println("List size: " + list.size());
-        }
-        catch(Exception e){
-            e.printStackTrace();
-        }
-    }
-
-    public static List<Move> getAllPossiblePositions(Piece[][]gameBoard,boolean player,List<String> notation){
-        List<Move> list = new ArrayList<>();
-        for(int x=0; x<gameBoard.length; x++){
-            for(int y=0; y<gameBoard[0].length; y++){
-                if(gameBoard[x][y]!=null && player==gameBoard[x][y].getPlayerPiece()){
-                    list.addAll(gameBoard[x][y].getPossibleMoves(gameBoard,x,y,notation));
-                }
-            }
-        }
-        return list;
-    }
-
-    public static int sumStaticPosition(Piece [][]gameBoard){
-        int pieceCountWorth = 0;
-        for(int x=0; x<gameBoard.length; x++){
-            for(int y=0; y<gameBoard[0].length; y++){
-                if(gameBoard[x][y] instanceof Piece){
-                    if(gameBoard[x][y].getPlayerPiece()){
-                        pieceCountWorth += gameBoard[x][y].getPieceWorth();
-                    }
-                    else{
-                        pieceCountWorth -= gameBoard[x][y].getPieceWorth();
-                    }
-                }
-            }
-        }
-        return pieceCountWorth;
-    }
-
-    public static void printBoard(Piece[][]gameBoard){
-        for(int x=0; x<gameBoard.length; x++){
-            for(int y=0; y<gameBoard[0].length; y++){
-                if(gameBoard[x][y] instanceof Piece){
-                    System.out.print(gameBoard[x][y].toString());
-                    for(int a=gameBoard[x][y].toString().length(); a<12; a++){
-                        System.out.print(" ");
-                    }
-                }
-                else{
-                    System.out.print("     []     ");
-                }
-            }
-            System.out.println();
-        }
     }
 
 }
