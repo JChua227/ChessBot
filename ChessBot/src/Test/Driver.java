@@ -12,11 +12,12 @@ public class Driver{
 
         List<String> list = new ArrayList<>();
         Bot bot = new Bot();
-        Move move = bot.getNextMove(list,4);
+        Move move = bot.getNextMove(list,9);
 
         bot.printBoard(move.getGameState());
         System.out.println(move.getNextMove());
-        System.out.println("Evaluation: " + move.getEvaluation());
+        double evaluation = move.getEvaluation();
+        System.out.println("Evaluation: " + evaluation);
         System.out.println(move.getMoveList());
 
     }

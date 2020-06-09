@@ -92,8 +92,8 @@ public class Move {
         this.extraTakePieceDepth++;
     }
 
-    public int getEvaluation(){
-        return this.evaluation;
+    public double getEvaluation(){
+        return this.evaluation/100;
     }
 
     public void setMoveList(String s){

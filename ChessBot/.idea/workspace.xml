@@ -5,19 +5,11 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ChessBot/Decision/Bot.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ChessBot/Decision/Bot.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ChessBot/Decision/Evaluator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ChessBot/Decision/Evaluator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ChessBot/Decision/GenerateBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ChessBot/Decision/GenerateBoard.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ChessBot/Decision/Move.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ChessBot/Decision/Move.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ChessBot/Decision/NotationConverter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ChessBot/Decision/NotationConverter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ChessBot/Pieces/King.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ChessBot/Pieces/King.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ChessBot/Pieces/Piece.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ChessBot/Pieces/Piece.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ChessBot/Test/Driver.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ChessBot/Test/Driver.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Decision/Bot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Decision/Bot.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Decision/Evaluator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Decision/Evaluator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Decision/GenerateBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Decision/GenerateBoard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Decision/Move.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Decision/Move.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Decision/NotationConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Decision/NotationConverter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pieces/King.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pieces/King.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pieces/Piece.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pieces/Piece.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Test/Driver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Test/Driver.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -40,7 +32,7 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../ExcelGenerator" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">

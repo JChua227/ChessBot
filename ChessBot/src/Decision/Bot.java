@@ -43,7 +43,7 @@ public class Bot {
     }
 
 
-    public Move miniMax(Move move, int depth, boolean turn, int alpha, int beta, String moveNotation){
+    public Move miniMax(Move move, int depth, boolean turn, double alpha, double beta, String moveNotation){
 
         if(evaluator.gameIsFinished(move)){
             if(evaluator.checkWinner(move)){
