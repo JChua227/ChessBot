@@ -74,6 +74,8 @@ public class GenerateBoard{
 
     public void playMoves(List<String> notation){
         this.notation = notation;
+
+
     }
 
 

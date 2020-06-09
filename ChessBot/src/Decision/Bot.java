@@ -61,7 +61,6 @@ public class Bot {
         }
 
         List<Move> states = getAllPossiblePositions(move.getGameState(),turn,move.getMoveList());
-
         if(turn){
             Move maxEval = new Move(move.getGameState(),-2000000000,"");
             for(int x=0; x<states.size(); x++){

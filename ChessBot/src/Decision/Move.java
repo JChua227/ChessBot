@@ -93,7 +93,7 @@ public class Move {
     }
 
     public double getEvaluation(){
-        return this.evaluation/100;
+        return (double)this.evaluation/100;
     }
 
     public void setMoveList(String s){
