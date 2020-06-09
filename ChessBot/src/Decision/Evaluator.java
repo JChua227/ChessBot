@@ -11,14 +11,14 @@ public class Evaluator{
     private static int[][]whiteQueenWorth;
     private static int[][]whiteRookWorth;
     private static int[][]whiteKingWorth;
-
-    private static int[][]knightWorth;
+    private static int[][]whiteKnightWorth;
 
     private static int[][]blackBishopWorth;
     private static int[][]blackPawnWorth;
     private static int[][]blackQueenWorth;
     private static int[][]blackRookWorth;
     private static int[][]blackKingWorth;
+    private static int[][]blackKnightWorth;
 
     public Evaluator(){
         setWhiteBishopWorth();
@@ -26,14 +26,14 @@ public class Evaluator{
         setWhiteQueenWorth();
         setWhiteRookWorth();
         setWhiteKingWorth();
-
-        setKnightWorth();
+        setWhiteKnightWorth();
 
         setBlackBishopWorth();
         setBlackPawnWorth();
         setBlackQueenWorth();
         setBlackRookWorth();
         setBlackKingWorth();
+        setBlackKnightWorth();
     }
 
     public void setWhiteBishopWorth(){
@@ -96,12 +96,12 @@ public class Evaluator{
                 {20, 30, 10, 0, 0, 10, 30, 20}};
     }
 
-    public void setKnightWorth(){
-        this.knightWorth = new int[][]{
+    public void setWhiteKnightWorth(){
+        this.whiteKnightWorth = new int[][]{
                 {-30, -20, -1, -1, -1, -1, 20, -30},
                 {-20, -8, -5, 2, 2, -5, -8, -20},
                 {-10, -2, 10, 15, 15, 10, -2, -10},
-                {-10, 2, 20, 25, 25, 2, 2, -10},
+                {-10, 2, 20, 25, 25, 20, 2, -10},
                 {-10, 2, 20, 25, 25, 20, 2, -10},
                 {-10, -2, 10, 20, 20, 10, -2, -10},
                 {-20, -8, -5, 2, 2, -5, -8, -20},
@@ -129,8 +129,8 @@ public class Evaluator{
         return this.whiteKingWorth;
     }
 
-    public int[][] getKnightWorth(){
-        return this.knightWorth;
+    public int[][] getWhiteKnightWorth(){
+        return this.whiteKnightWorth;
     }
 
     public void setBlackBishopWorth(){
@@ -153,6 +153,10 @@ public class Evaluator{
         this.blackKingWorth = swapToBlackPerspective(getWhiteKingWorth());
     }
 
+    public void setBlackKnightWorth(){
+        this.blackKnightWorth = swapToBlackPerspective(getWhiteKnightWorth());
+    }
+
     public int[][] getBlackBishopWorth(){
         return this.blackBishopWorth;
     }
@@ -172,6 +176,10 @@ public class Evaluator{
 
     public int[][] getBlackKingWorth(){
         return this.blackKingWorth;
+    }
+
+    public int[][] getBlackKnightWorth(){
+        return this.blackKnightWorth;
     }
 
     public int[][] swapToBlackPerspective(int[][] array){
@@ -231,9 +239,9 @@ public class Evaluator{
                     }
                     else if(gameBoard[x][y] instanceof Knight){
                         if(gameBoard[x][y].getPlayerPiece())
-                            worth += getKnightWorth()[x][y];
+                            worth += getWhiteKnightWorth()[x][y];
                         else{
-                            worth -= getKnightWorth()[x][y];
+                            worth -= getBlackKnightWorth()[x][y];
                         }
                     }
                     else if(gameBoard[x][y] instanceof Pawn){
