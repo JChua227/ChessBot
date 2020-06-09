@@ -7,7 +7,7 @@ import java.util.*;
 public class Bishop extends Piece{
 
     public Bishop(boolean playerPiece){
-        super(playerPiece,33);
+        super(playerPiece,330);
     }
 
     public String toString(){

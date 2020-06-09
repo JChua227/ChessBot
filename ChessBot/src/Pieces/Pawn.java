@@ -7,7 +7,7 @@ import java.util.*;
 public class Pawn extends Piece{
 
     public Pawn(boolean playerPiece){
-        super(playerPiece,10);
+        super(playerPiece,100);
     }
 
     public String toString(){
