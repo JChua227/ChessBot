@@ -29,8 +29,8 @@ public abstract class Piece{
         return this.moved;
     }
 
-    public void setMoved(){
-        this.moved = true;
+    public void setMoved(boolean moved){
+        this.moved = moved;
     }
 
     public NotationConverter getNotationConverter(){
@@ -43,26 +43,32 @@ public abstract class Piece{
             for(int y=0; y<gameBoard[0].length; y++){
                 if(gameBoard[x][y] instanceof Pawn){
                     Pawn pawn = new Pawn(gameBoard[x][y].getPlayerPiece());
+                    pawn.setMoved(gameBoard[x][y].getMoved());
                     temp[x][y] = pawn;
                 }
                 else if(gameBoard[x][y] instanceof Bishop){
                     Bishop bishop = new Bishop(gameBoard[x][y].getPlayerPiece());
+                    bishop.setMoved(gameBoard[x][y].getMoved());
                     temp[x][y] = bishop;
                 }
                 else if(gameBoard[x][y] instanceof Rook){
                     Rook rook = new Rook(gameBoard[x][y].getPlayerPiece());
+                    rook.setMoved(gameBoard[x][y].getMoved());
                     temp[x][y] = rook;
                 }
                 else if(gameBoard[x][y] instanceof Knight){
                     Knight knight = new Knight(gameBoard[x][y].getPlayerPiece());
+                    knight.setMoved(gameBoard[x][y].getMoved());
                     temp[x][y] = knight;
                 }
                 else if(gameBoard[x][y] instanceof Queen){
                     Queen queen = new Queen(gameBoard[x][y].getPlayerPiece());
+                    queen.setMoved(gameBoard[x][y].getMoved());
                     temp[x][y] = queen;
                 }
                 else if(gameBoard[x][y] instanceof King){
                     King king = new King(gameBoard[x][y].getPlayerPiece());
+                    king.setMoved(gameBoard[x][y].getMoved());
                     temp[x][y] = king;
                 }
             }

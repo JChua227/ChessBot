@@ -22,7 +22,7 @@ public class Rook extends Piece{
         while(xHolder!=gameBoard.length && gameBoard[xHolder][yHolder]==null){
             Piece[][] possiblePosition = this.copy(gameBoard);
             Rook rook = new Rook(gameBoard[x][y].getPlayerPiece());
-            rook.setMoved();
+            rook.setMoved(true);
             possiblePosition[x][y] = null;
             possiblePosition[xHolder][yHolder] = rook;
             List<String> newNotation = this.generateNewNotation(notation, x, y, xHolder, yHolder);
@@ -32,7 +32,7 @@ public class Rook extends Piece{
             if(xHolder!=gameBoard.length && gameBoard[xHolder][yHolder]!=null && gameBoard[xHolder][yHolder].getPlayerPiece()!=gameBoard[x][y].getPlayerPiece()){
                 Piece[][] possibleTakePosition = this.copy(gameBoard);
                 Rook rookTake = new Rook(gameBoard[x][y].getPlayerPiece());
-                rookTake.setMoved();
+                rookTake.setMoved(true);
                 possibleTakePosition[x][y] = null;
                 possibleTakePosition[xHolder][yHolder] = rookTake;
                 List<String> newNotation2 = this.generateNewNotation(notation, x, y, xHolder, yHolder);
@@ -46,7 +46,7 @@ public class Rook extends Piece{
         while(xHolder!=-1 && gameBoard[xHolder][yHolder]==null){
             Piece[][] possiblePosition = this.copy(gameBoard);
             Rook rook = new Rook(gameBoard[x][y].getPlayerPiece());
-            rook.setMoved();
+            rook.setMoved(true);
             possiblePosition[x][y] = null;
             possiblePosition[xHolder][yHolder] = rook;
             List<String> newNotation = this.generateNewNotation(notation, x, y, xHolder, yHolder);
@@ -56,7 +56,7 @@ public class Rook extends Piece{
             if(xHolder!=-1 && gameBoard[xHolder][yHolder]!=null && !gameBoard[xHolder][yHolder].getPlayerPiece()){
                 Piece[][] possibleTakePosition = this.copy(gameBoard);
                 Rook rookTake = new Rook(gameBoard[x][y].getPlayerPiece());
-                rookTake.setMoved();
+                rookTake.setMoved(true);
                 possibleTakePosition[x][y] = null;
                 possibleTakePosition[xHolder][yHolder] = rookTake;
                 List<String> newNotation2 = this.generateNewNotation(notation, x, y, xHolder, yHolder);
@@ -70,7 +70,7 @@ public class Rook extends Piece{
         while(yHolder!=gameBoard[0].length && gameBoard[xHolder][yHolder]==null){
             Piece[][] possiblePosition = this.copy(gameBoard);
             Rook rook = new Rook(gameBoard[x][y].getPlayerPiece());
-            rook.setMoved();
+            rook.setMoved(true);
             possiblePosition[x][y] = null;
             possiblePosition[xHolder][yHolder] = rook;
             List<String> newNotation = this.generateNewNotation(notation, x, y, xHolder, yHolder);
@@ -80,7 +80,7 @@ public class Rook extends Piece{
             if(yHolder!=gameBoard[0].length && gameBoard[xHolder][yHolder]!=null && !gameBoard[xHolder][yHolder].getPlayerPiece()){
                 Piece[][] possibleTakePosition = this.copy(gameBoard);
                 Rook rookTake = new Rook(gameBoard[x][y].getPlayerPiece());
-                rookTake.setMoved();
+                rookTake.setMoved(true);
                 possibleTakePosition[x][y] = null;
                 possibleTakePosition[xHolder][yHolder] = rookTake;
                 List<String> newNotation2 = this.generateNewNotation(notation, x, y, xHolder, yHolder);
@@ -94,7 +94,7 @@ public class Rook extends Piece{
         while(yHolder!=-1 && gameBoard[xHolder][yHolder]==null){
             Piece[][] possiblePosition = this.copy(gameBoard);
             Rook rook = new Rook(gameBoard[x][y].getPlayerPiece());
-            rook.setMoved();
+            rook.setMoved(true);
             possiblePosition[x][y] = null;
             possiblePosition[xHolder][yHolder] = rook;
             List<String> newNotation = this.generateNewNotation(notation, x, y, xHolder, yHolder);
@@ -104,7 +104,7 @@ public class Rook extends Piece{
             if(yHolder!=-1 && gameBoard[xHolder][yHolder]!=null && !gameBoard[xHolder][yHolder].getPlayerPiece()){
                 Piece[][] possibleTakePosition = this.copy(gameBoard);
                 Rook rookTake = new Rook(gameBoard[x][y].getPlayerPiece());
-                rookTake.setMoved();
+                rookTake.setMoved(true);
                 possibleTakePosition[x][y] = null;
                 possibleTakePosition[xHolder][yHolder] = rookTake;
                 List<String> newNotation2 = this.generateNewNotation(notation, x, y, xHolder, yHolder);

@@ -23,7 +23,7 @@ public class Bishop extends Piece{
         while(xHolder!=gameBoard.length && yHolder!=gameBoard[0].length && gameBoard[xHolder][yHolder]==null){
             Piece[][] possiblePosition = this.copy(gameBoard);
             Bishop bishop = new Bishop(gameBoard[x][y].getPlayerPiece());
-            bishop.setMoved();
+            bishop.setMoved(true);
             possiblePosition[x][y] = null;
             possiblePosition[xHolder][yHolder] = bishop;
             List<String> newNotation = this.generateNewNotation(notation, x, y, xHolder, yHolder);
@@ -34,7 +34,7 @@ public class Bishop extends Piece{
             if(xHolder!=gameBoard.length && yHolder!=gameBoard[0].length && gameBoard[xHolder][yHolder]!=null && gameBoard[xHolder][yHolder].getPlayerPiece()!=gameBoard[x][y].getPlayerPiece()){
                 Piece[][] possibleTakePosition = this.copy(gameBoard);
                 Bishop bishopTake = new Bishop(gameBoard[x][y].getPlayerPiece());
-                bishopTake.setMoved();
+                bishopTake.setMoved(true);
                 possibleTakePosition[x][y] = null;
                 possibleTakePosition[xHolder][yHolder] = bishopTake;
                 List<String> newNotation2 = this.generateNewNotation(notation, x, y, xHolder, yHolder);
@@ -48,7 +48,7 @@ public class Bishop extends Piece{
         while(xHolder!=-1 && yHolder!=-1 && gameBoard[xHolder][yHolder]==null){
             Piece[][] possiblePosition = this.copy(gameBoard);
             Bishop bishop = new Bishop(gameBoard[x][y].getPlayerPiece());
-            bishop.setMoved();
+            bishop.setMoved(true);
             possiblePosition[x][y] = null;
             possiblePosition[xHolder][yHolder] = bishop;
             List<String> newNotation = this.generateNewNotation(notation, x, y, xHolder, yHolder);
@@ -59,7 +59,7 @@ public class Bishop extends Piece{
             if(xHolder!=-1 && yHolder!=-1 && gameBoard[xHolder][yHolder]!=null && gameBoard[xHolder][yHolder].getPlayerPiece()!=gameBoard[x][y].getPlayerPiece()){
                 Piece[][] possibleTakePosition = this.copy(gameBoard);
                 Bishop bishopTake = new Bishop(gameBoard[x][y].getPlayerPiece());
-                bishopTake.setMoved();
+                bishopTake.setMoved(true);
                 possibleTakePosition[x][y] = null;
                 possibleTakePosition[xHolder][yHolder] = bishopTake;
                 List<String> newNotation2 = this.generateNewNotation(notation, x, y, xHolder, yHolder);
@@ -73,7 +73,7 @@ public class Bishop extends Piece{
         while(xHolder!=gameBoard.length && yHolder!=-1 && gameBoard[xHolder][yHolder]==null){
             Piece[][] possiblePosition = this.copy(gameBoard);
             Bishop bishop = new Bishop(gameBoard[x][y].getPlayerPiece());
-            bishop.setMoved();
+            bishop.setMoved(true);
             possiblePosition[x][y] = null;
             possiblePosition[xHolder][yHolder] = bishop;
             List<String> newNotation = this.generateNewNotation(notation, x, y, xHolder, yHolder);
@@ -84,7 +84,7 @@ public class Bishop extends Piece{
             if(xHolder!=gameBoard.length && yHolder!=-1 && gameBoard[xHolder][yHolder]!=null && gameBoard[xHolder][yHolder].getPlayerPiece()!=gameBoard[x][y].getPlayerPiece()){
                 Piece[][] possibleTakePosition = this.copy(gameBoard);
                 Bishop bishopTake = new Bishop(gameBoard[x][y].getPlayerPiece());
-                bishopTake.setMoved();
+                bishopTake.setMoved(true);
                 possibleTakePosition[x][y] = null;
                 possibleTakePosition[xHolder][yHolder] = bishopTake;
                 List<String> newNotation2 = this.generateNewNotation(notation, x, y, xHolder, yHolder);
@@ -98,7 +98,7 @@ public class Bishop extends Piece{
         while(xHolder!=-1 && yHolder!=gameBoard[0].length && gameBoard[xHolder][yHolder]==null){
             Piece[][] possiblePosition = this.copy(gameBoard);
             Bishop bishop = new Bishop(gameBoard[x][y].getPlayerPiece());
-            bishop.setMoved();
+            bishop.setMoved(true);
             possiblePosition[x][y] = null;
             possiblePosition[xHolder][yHolder] = bishop;
             List<String> newNotation = this.generateNewNotation(notation, x, y, xHolder, yHolder);
@@ -109,7 +109,7 @@ public class Bishop extends Piece{
             if(xHolder!=-1 && yHolder!=gameBoard[0].length && gameBoard[xHolder][yHolder]!=null && gameBoard[xHolder][yHolder].getPlayerPiece()!=gameBoard[x][y].getPlayerPiece()){
                 Piece[][] possibleTakePosition = this.copy(gameBoard);
                 Bishop bishopTake = new Bishop(gameBoard[x][y].getPlayerPiece());
-                bishopTake.setMoved();
+                bishopTake.setMoved(true);
                 possibleTakePosition[x][y] = null;
                 possibleTakePosition[xHolder][yHolder] = bishopTake;
                 List<String> newNotation2 = this.generateNewNotation(notation, x, y, xHolder, yHolder);

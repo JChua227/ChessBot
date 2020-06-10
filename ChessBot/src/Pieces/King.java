@@ -19,7 +19,7 @@ public class King extends Piece{
         if(x+1<gameBoard.length && y+1<gameBoard[0].length && (gameBoard[x+1][y+1]==null || gameBoard[x+1][y+1].getPlayerPiece()!=gameBoard[x][y].getPlayerPiece())){
             Piece[][] possiblePosition = this.copy(gameBoard);
             King king = new King(gameBoard[x][y].getPlayerPiece());
-            king.setMoved();
+            king.setMoved(true);
             possiblePosition[x][y] = null;
             possiblePosition[x+1][y+1] = king;
             List<String> newNotation = this.generateNewNotation(notation, x, y, x+1, y+1);
@@ -29,7 +29,7 @@ public class King extends Piece{
         if(x+1<gameBoard.length && (gameBoard[x+1][y]==null || gameBoard[x+1][y].getPlayerPiece()!=gameBoard[x][y].getPlayerPiece())){
             Piece[][] possiblePosition = this.copy(gameBoard);
             King king = new King(gameBoard[x][y].getPlayerPiece());
-            king.setMoved();
+            king.setMoved(true);
             possiblePosition[x][y] = null;
             possiblePosition[x+1][y] = king;
             List<String> newNotation = this.generateNewNotation(notation, x, y, x+1, y);
@@ -39,7 +39,7 @@ public class King extends Piece{
         if(x+1<gameBoard.length && y-1>-1 && (gameBoard[x+1][y-1]==null || gameBoard[x+1][y-1].getPlayerPiece()!=gameBoard[x][y].getPlayerPiece())){
             Piece[][] possiblePosition = this.copy(gameBoard);
             King king = new King(gameBoard[x][y].getPlayerPiece());
-            king.setMoved();
+            king.setMoved(true);
             possiblePosition[x][y] = null;
             possiblePosition[x+1][y-1] = king;
             List<String> newNotation = this.generateNewNotation(notation, x, y, x+1, y-1);
@@ -49,7 +49,7 @@ public class King extends Piece{
         if(y-1>-1 && (gameBoard[x][y-1]==null || gameBoard[x][y-1].getPlayerPiece()!=gameBoard[x][y].getPlayerPiece())){
             Piece[][] possiblePosition = this.copy(gameBoard);
             King king = new King(gameBoard[x][y].getPlayerPiece());
-            king.setMoved();
+            king.setMoved(true);
             possiblePosition[x][y] = null;
             possiblePosition[x][y-1] = king;
             List<String> newNotation = this.generateNewNotation(notation, x, y, x, y-1);
@@ -59,7 +59,7 @@ public class King extends Piece{
         if(x-1>-1 && y-1>-1 && (gameBoard[x-1][y-1]==null || gameBoard[x-1][y-1].getPlayerPiece()!=gameBoard[x][y].getPlayerPiece())){
             Piece[][] possiblePosition = this.copy(gameBoard);
             King king = new King(gameBoard[x][y].getPlayerPiece());
-            king.setMoved();
+            king.setMoved(true);
             possiblePosition[x][y] = null;
             possiblePosition[x-1][y-1] = king;
             List<String> newNotation = this.generateNewNotation(notation, x, y, x-1, y-1);
@@ -69,7 +69,7 @@ public class King extends Piece{
         if(x-1>-1 && (gameBoard[x-1][y]==null || gameBoard[x-1][y].getPlayerPiece()!=gameBoard[x][y].getPlayerPiece())){
             Piece[][] possiblePosition = this.copy(gameBoard);
             King king = new King(gameBoard[x][y].getPlayerPiece());
-            king.setMoved();
+            king.setMoved(true);
             possiblePosition[x][y] = null;
             possiblePosition[x-1][y] = king;
             List<String> newNotation = this.generateNewNotation(notation, x, y, x-1, y);
@@ -79,7 +79,7 @@ public class King extends Piece{
         if(x-1>-1 && y+1<gameBoard[0].length && (gameBoard[x-1][y+1]==null || gameBoard[x-1][y+1].getPlayerPiece()!=gameBoard[x][y].getPlayerPiece())){
             Piece[][] possiblePosition = this.copy(gameBoard);
             King king = new King(gameBoard[x][y].getPlayerPiece());
-            king.setMoved();
+            king.setMoved(true);
             possiblePosition[x][y] = null;
             possiblePosition[x-1][y+1] = king;
             List<String> newNotation = this.generateNewNotation(notation, x, y, x-1, y+1);
@@ -89,7 +89,7 @@ public class King extends Piece{
         if(y+1<gameBoard[0].length && (gameBoard[x][y+1]==null || gameBoard[x][y+1].getPlayerPiece()!=gameBoard[x][y].getPlayerPiece())){
             Piece[][] possiblePosition = this.copy(gameBoard);
             King king = new King(gameBoard[x][y].getPlayerPiece());
-            king.setMoved();
+            king.setMoved(true);
             possiblePosition[x][y] = null;
             possiblePosition[x][y+1] = king;
             List<String> newNotation = this.generateNewNotation(notation, x, y, x, y+1);
