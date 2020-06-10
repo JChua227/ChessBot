@@ -4,13 +4,9 @@
     <list default="true" id="dddfbc49-8f15-41f5-ba19-8fdd95a02b3e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ChessBot/Decision/GenerateBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ChessBot/Decision/GenerateBoard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ChessBot/Decision/NotationConverter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ChessBot/Decision/NotationConverter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ChessBot/Pieces/Pawn.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ChessBot/Pieces/Pawn.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ChessBot/Pieces/Piece.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ChessBot/Pieces/Piece.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ChessBot/Test/Driver.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ChessBot/Test/Driver.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Decision/GenerateBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Decision/GenerateBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Decision/NotationConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Decision/NotationConverter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pieces/Pawn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pieces/Pawn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pieces/Piece.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pieces/Piece.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Test/Driver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Test/Driver.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

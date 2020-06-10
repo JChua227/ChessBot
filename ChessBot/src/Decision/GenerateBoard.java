@@ -76,41 +76,81 @@ public class GenerateBoard{
     public void playMoves(List<String> notation){
         this.notation = notation;
 
-        for(int x=0; x<notation.size(); x++){
-            int xPosition = getNotationConverter().getNotationRow().indexOf(Integer.parseInt(String.valueOf(notation.get(x).charAt(1))));
-            int yPosition = getNotationConverter().getNotationColumn().indexOf(notation.get(x).charAt(0));
-            int xEndPosition = getNotationConverter().getNotationRow().indexOf(Integer.parseInt(String.valueOf(notation.get(x).charAt(4))));
-            int yEndPosition = getNotationConverter().getNotationColumn().indexOf(notation.get(x).charAt(3));
+        try {
+            for (int x = 0; x < notation.size(); x++) {
+                int xPosition = getNotationConverter().getNotationRow().indexOf(Integer.parseInt(String.valueOf(notation.get(x).charAt(1))));
+                int yPosition = getNotationConverter().getNotationColumn().indexOf(notation.get(x).charAt(0));
+                int xEndPosition = getNotationConverter().getNotationRow().indexOf(Integer.parseInt(String.valueOf(notation.get(x).charAt(4))));
+                int yEndPosition = getNotationConverter().getNotationColumn().indexOf(notation.get(x).charAt(3));
 
-            if(getGameBoard()[xPosition][yPosition] instanceof Pawn){
-                Pawn pawn = new Pawn(getGameBoard()[xPosition][yPosition].getPlayerPiece());
-                getGameBoard()[xEndPosition][yEndPosition] = pawn;
+                if (getGameBoard()[xPosition][yPosition] instanceof Pawn) {
+                    if(xEndPosition==0 || xEndPosition==getGameBoard().length){
+                        pawnPromotion(notation.get(x),xPosition,yPosition,xEndPosition,yEndPosition);
+                    }
+                    else {
+                        Pawn pawn = new Pawn(getGameBoard()[xPosition][yPosition].getPlayerPiece());
+                        pawn.setMoved(true);
+                        getGameBoard()[xEndPosition][yEndPosition] = pawn;
+                    }
+                } else if (getGameBoard()[xPosition][yPosition] instanceof Rook) {
+                    Rook rook = new Rook(getGameBoard()[xPosition][yPosition].getPlayerPiece());
+                    rook.setMoved(true);
+                    getGameBoard()[xEndPosition][yEndPosition] = rook;
+                } else if (getGameBoard()[xPosition][yPosition] instanceof Bishop) {
+                    Bishop bishop = new Bishop(getGameBoard()[xPosition][yPosition].getPlayerPiece());
+                    bishop.setMoved(true);
+                    getGameBoard()[xEndPosition][yEndPosition] = bishop;
+                } else if (getGameBoard()[xPosition][yPosition] instanceof Knight) {
+                    Knight knight = new Knight(getGameBoard()[xPosition][yPosition].getPlayerPiece());
+                    knight.setMoved(true);
+                    getGameBoard()[xEndPosition][yEndPosition] = knight;
+                } else if (getGameBoard()[xPosition][yPosition] instanceof Queen) {
+                    Queen queen = new Queen(getGameBoard()[xPosition][yPosition].getPlayerPiece());
+                    queen.setMoved(true);
+                    getGameBoard()[xEndPosition][yEndPosition] = queen;
+                } else if (getGameBoard()[xPosition][yPosition] instanceof King) {
+                    King king = new King(getGameBoard()[xPosition][yPosition].getPlayerPiece());
+                    king.setMoved(true);
+                    getGameBoard()[xEndPosition][yEndPosition] = king;
+                } else {
+                    System.out.println("Error: Accessing null piece in user move list");
+                    System.exit(-1);
+                }
+                getGameBoard()[xPosition][yPosition] = null;
             }
-            else if(getGameBoard()[xPosition][yPosition] instanceof Rook){
-                Rook rook = new Rook(getGameBoard()[xPosition][yPosition].getPlayerPiece());
-                getGameBoard()[xEndPosition][yEndPosition] = rook;
-            }
-            else if(getGameBoard()[xPosition][yPosition] instanceof Bishop){
-                Bishop bishop = new Bishop(getGameBoard()[xPosition][yPosition].getPlayerPiece());
-                getGameBoard()[xEndPosition][yEndPosition] = bishop;
-            }
-            else if(getGameBoard()[xPosition][yPosition] instanceof Knight){
-                Knight knight = new Knight(getGameBoard()[xPosition][yPosition].getPlayerPiece());
-                getGameBoard()[xEndPosition][yEndPosition] = knight;
-            }
-            else if(getGameBoard()[xPosition][yPosition] instanceof Queen){
-                Queen queen = new Queen(getGameBoard()[xPosition][yPosition].getPlayerPiece());
-                getGameBoard()[xEndPosition][yEndPosition] = queen;
-            }
-            else if(getGameBoard()[xPosition][yPosition] instanceof King){
-                King king = new King(getGameBoard()[xPosition][yPosition].getPlayerPiece());
-                getGameBoard()[xEndPosition][yEndPosition] = king;
-            }
-            else{
-                System.out.println("Error: accessing null piece in user move list");
-            }
-            getGameBoard()[xPosition][yPosition] = null;
         }
+        catch(Exception e){
+            System.out.println("Error: Incorrect syntax");
+            System.exit(-1);
+        }
+    }
+
+    public void pawnPromotion(String s,int xPosition, int yPosition, int xEndPosition, int yEndPosition){
+        if(s.charAt(6)=='Q'){
+            Queen queen = new Queen(getGameBoard()[xPosition][yPosition].getPlayerPiece());
+            queen.setMoved(true);
+            getGameBoard()[xEndPosition][yEndPosition] = queen;
+        }
+        else if(s.charAt(6)=='R'){
+            Rook rook = new Rook(getGameBoard()[xPosition][yPosition].getPlayerPiece());
+            rook.setMoved(true);
+            getGameBoard()[xEndPosition][yEndPosition] = rook;
+        }
+        else if(s.charAt(6)=='B'){
+            Bishop bishop = new Bishop(getGameBoard()[xPosition][yPosition].getPlayerPiece());
+            bishop.setMoved(true);
+            getGameBoard()[xEndPosition][yEndPosition] = bishop;
+        }
+        else if(s.charAt(6)=='N'){
+            Knight knight = new Knight(getGameBoard()[xPosition][yPosition].getPlayerPiece());
+            knight.setMoved(true);
+            getGameBoard()[xEndPosition][yEndPosition] = knight;
+        }
+        else{
+            System.out.println("Error: " + s + " is an incorrect syntax");
+            System.exit(-1);
+        }
+
     }
 
 
