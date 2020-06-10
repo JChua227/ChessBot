@@ -78,10 +78,19 @@ public abstract class Piece{
 
     public abstract List<Move> getPossibleMoves(Piece[][] gameBoard, int x, int y,List<String> notation);
 
+    //generates new notation
     public List<String> generateNewNotation(List<String> notation, int x, int y, int xDestination, int yDestination){
         List<String> list = new ArrayList<>();
         list.addAll(notation);
         list.add(getNotationConverter().getNotationColumn(y) + "" + getNotationConverter().getNotationRow(x) + "-" + getNotationConverter().getNotationColumn(yDestination) + getNotationConverter().getNotationRow(xDestination));
+        return list;
+    }
+
+    //generates new notation with pawn promotion
+    public List<String> generateNewNotation(List<String> notation, int x, int y, int xDestination, int yDestination,String s){
+        List<String> list = new ArrayList<>();
+        list.addAll(notation);
+        list.add(getNotationConverter().getNotationColumn(y) + "" + getNotationConverter().getNotationRow(x) + "-" + getNotationConverter().getNotationColumn(yDestination) + getNotationConverter().getNotationRow(xDestination) + s);
         return list;
     }
 }

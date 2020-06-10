@@ -12,7 +12,7 @@ public class Driver{
 
         List<String> list = new ArrayList<>();
         Bot bot = new Bot();
-        Move move = bot.getNextMove(list,1);
+        Move move = bot.getNextMove(list,3);
 
         bot.printBoard(move.getGameState());
         System.out.println(move.getNextMove());

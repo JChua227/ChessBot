@@ -14,7 +14,7 @@ public class Pawn extends Piece{
         return getPlayerPiece() + "Pawn";
     }
 
-    //TODO: get all possible moves for pawns
+    //TODO: check for en passant
     public List<Move> getPossibleMoves(Piece [][]gameBoard, int x, int y, List<String> notation){
         int forward = -1;
         if(!gameBoard[x][y].getPlayerPiece()){
@@ -91,7 +91,7 @@ public class Pawn extends Piece{
         queen.setMoved(true);
         possiblePosition1[x][y] = null;
         possiblePosition1[x + forward][y+yIncrementer] = queen;
-        List<String> newNotation1 = this.generateNewNotation(notation, x, y, x + forward, y+yIncrementer);
+        List<String> newNotation1 = this.generateNewNotation(notation, x, y, x + forward, y+yIncrementer,"=Q");
         Move move1 = new Move(x, y, x + forward, y+yIncrementer, possiblePosition1, newNotation1);
         list.add(move1);
 
@@ -100,7 +100,7 @@ public class Pawn extends Piece{
         rook.setMoved(true);
         possiblePosition2[x][y] = null;
         possiblePosition2[x + forward][y+yIncrementer] = rook;
-        List<String> newNotation2 = this.generateNewNotation(notation, x, y, x + forward, y+yIncrementer);
+        List<String> newNotation2 = this.generateNewNotation(notation, x, y, x + forward, y+yIncrementer,"=R");
         Move move2 = new Move(x, y, x + forward, y+yIncrementer, possiblePosition2, newNotation2);
         list.add(move2);
 
@@ -109,7 +109,7 @@ public class Pawn extends Piece{
         knight.setMoved(true);
         possiblePosition3[x][y] = null;
         possiblePosition3[x + forward][y+yIncrementer] = knight;
-        List<String> newNotation3 = this.generateNewNotation(notation, x, y, x + forward, y+yIncrementer);
+        List<String> newNotation3 = this.generateNewNotation(notation, x, y, x + forward, y+yIncrementer,"=N");
         Move move3 = new Move(x, y, x + forward, y+yIncrementer, possiblePosition3, newNotation3);
         list.add(move3);
 
@@ -118,7 +118,7 @@ public class Pawn extends Piece{
         bishop.setMoved(true);
         possiblePosition4[x][y] = null;
         possiblePosition4[x + forward][y+yIncrementer] = bishop;
-        List<String> newNotation4 = this.generateNewNotation(notation, x, y, x + forward, y+yIncrementer);
+        List<String> newNotation4 = this.generateNewNotation(notation, x, y, x + forward, y+yIncrementer,"=B");
         Move move4 = new Move(x, y, x + forward, y+yIncrementer, possiblePosition4, newNotation4);
         list.add(move4);
     }

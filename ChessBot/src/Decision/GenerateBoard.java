@@ -72,10 +72,45 @@ public class GenerateBoard{
     }
 
 
+    //TODO: add notation to read pawn promotions and en passant
     public void playMoves(List<String> notation){
         this.notation = notation;
 
+        for(int x=0; x<notation.size(); x++){
+            int xPosition = getNotationConverter().getNotationRow().indexOf(Integer.parseInt(String.valueOf(notation.get(x).charAt(1))));
+            int yPosition = getNotationConverter().getNotationColumn().indexOf(notation.get(x).charAt(0));
+            int xEndPosition = getNotationConverter().getNotationRow().indexOf(Integer.parseInt(String.valueOf(notation.get(x).charAt(4))));
+            int yEndPosition = getNotationConverter().getNotationColumn().indexOf(notation.get(x).charAt(3));
 
+            if(getGameBoard()[xPosition][yPosition] instanceof Pawn){
+                Pawn pawn = new Pawn(getGameBoard()[xPosition][yPosition].getPlayerPiece());
+                getGameBoard()[xEndPosition][yEndPosition] = pawn;
+            }
+            else if(getGameBoard()[xPosition][yPosition] instanceof Rook){
+                Rook rook = new Rook(getGameBoard()[xPosition][yPosition].getPlayerPiece());
+                getGameBoard()[xEndPosition][yEndPosition] = rook;
+            }
+            else if(getGameBoard()[xPosition][yPosition] instanceof Bishop){
+                Bishop bishop = new Bishop(getGameBoard()[xPosition][yPosition].getPlayerPiece());
+                getGameBoard()[xEndPosition][yEndPosition] = bishop;
+            }
+            else if(getGameBoard()[xPosition][yPosition] instanceof Knight){
+                Knight knight = new Knight(getGameBoard()[xPosition][yPosition].getPlayerPiece());
+                getGameBoard()[xEndPosition][yEndPosition] = knight;
+            }
+            else if(getGameBoard()[xPosition][yPosition] instanceof Queen){
+                Queen queen = new Queen(getGameBoard()[xPosition][yPosition].getPlayerPiece());
+                getGameBoard()[xEndPosition][yEndPosition] = queen;
+            }
+            else if(getGameBoard()[xPosition][yPosition] instanceof King){
+                King king = new King(getGameBoard()[xPosition][yPosition].getPlayerPiece());
+                getGameBoard()[xEndPosition][yEndPosition] = king;
+            }
+            else{
+                System.out.println("Error: accessing null piece in user move list");
+            }
+            getGameBoard()[xPosition][yPosition] = null;
+        }
     }
 
 

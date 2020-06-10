@@ -35,5 +35,13 @@ public class NotationConverter {
         return this.notationRow.get(x);
     }
 
+    public List<Character> getNotationColumn(){
+        return this.notationColumn;
+    }
+
+    public List<Integer> getNotationRow(){
+        return this.notationRow;
+    }
+
 
 }
