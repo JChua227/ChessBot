@@ -72,7 +72,7 @@ public class GenerateBoard{
     }
 
 
-    //TODO: add notation to read pawn promotions and en passant
+    //ASSUMING player is playing moves within rules, it is able to translate it accordingly
     public void playMoves(List<String> notation){
         this.notation = notation;
 
@@ -88,6 +88,16 @@ public class GenerateBoard{
                         pawnPromotion(notation.get(x),xPosition,yPosition,xEndPosition,yEndPosition);
                     }
                     else {
+                        if(yPosition!=yEndPosition){
+                            if(getGameBoard()[xEndPosition][yEndPosition]==null){
+                                if(getGameBoard()[xEndPosition+1][yEndPosition]!=null){
+                                    getGameBoard()[xEndPosition+1][yEndPosition]=null;
+                                }
+                                else{
+                                    getGameBoard()[xEndPosition-1][yEndPosition]=null;
+                                }
+                            }
+                        }
                         Pawn pawn = new Pawn(getGameBoard()[xPosition][yPosition].getPlayerPiece());
                         pawn.setMoved(true);
                         getGameBoard()[xEndPosition][yEndPosition] = pawn;
