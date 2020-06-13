@@ -38,6 +38,10 @@ public class GenerateBoard{
             gameBoard[6][x] = new Pawn(true);
             gameBoard[1][x] = new Pawn(false);
         }
+
+        Pawn pawn = new Pawn(false);
+        pawn.setMoved(true);
+        gameBoard[4][0] = pawn;
     }
 
     public void fillRook(Piece [][]gameBoard){
@@ -89,12 +93,17 @@ public class GenerateBoard{
                     }
                     else {
                         if(yPosition!=yEndPosition){
-                            if(getGameBoard()[xEndPosition][yEndPosition]==null){
-                                if(getGameBoard()[xEndPosition+1][yEndPosition]!=null){
-                                    getGameBoard()[xEndPosition+1][yEndPosition]=null;
+                            if(getGameBoard()[xEndPosition][yEndPosition]==null) {
+                                if((xPosition==4 && getGameBoard()[xPosition][yPosition].getPlayerPiece()==false) || (xPosition==3 && getGameBoard()[xPosition][yPosition].getPlayerPiece()==true)) {
+                                    if (getGameBoard()[xEndPosition + 1][yEndPosition] != null) {
+                                        getGameBoard()[xEndPosition + 1][yEndPosition] = null;
+                                    } else {
+                                        getGameBoard()[xEndPosition - 1][yEndPosition] = null;
+                                    }
                                 }
                                 else{
-                                    getGameBoard()[xEndPosition-1][yEndPosition]=null;
+                                    System.out.println("Error: Cannot en passant here");
+                                    System.exit(-1);
                                 }
                             }
                         }
