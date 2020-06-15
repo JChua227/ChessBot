@@ -90,7 +90,11 @@ public abstract class Piece{
     public List<String> generateNewNotation(List<String> notation, int x, int y, int xDestination, int yDestination,String s){
         List<String> list = new ArrayList<>();
         list.addAll(notation);
-        list.add(getNotationConverter().getNotationColumn(y) + "" + getNotationConverter().getNotationRow(x) + "-" + getNotationConverter().getNotationColumn(yDestination) + getNotationConverter().getNotationRow(xDestination) + s);
+        list.add(getNotation(x,y,xDestination,yDestination,s));
         return list;
+    }
+
+    public String getNotation(int x, int y, int xDestination, int yDestination, String s){
+        return getNotationConverter().getNotationColumn(y) + "" + getNotationConverter().getNotationRow(x) + "-" + getNotationConverter().getNotationColumn(yDestination) + getNotationConverter().getNotationRow(xDestination) + s;
     }
 }

@@ -1,6 +1,7 @@
 package Pieces;
 
 import Decision.Move;
+import Decision.NotationConverter;
 
 import java.util.*;
 
@@ -82,7 +83,29 @@ public class Pawn extends Piece{
             }
         }
 
+        if(y-1>-1 && gameBoard[x][y-1]!=null) {
+            System.out.println(x + " " + y);
+            enPassant(gameBoard, x, y, -1, notation, forward, list);
+        }
+        if(y+1<gameBoard[0].length && gameBoard[x][y+1]!=null) {
+            System.out.println(x + "" + y);
+            enPassant(gameBoard, x, y, 1, notation, forward, list);
+        }
         return list;
+    }
+
+    public void enPassant(Piece [][]gameBoard, int x, int y, int yAddition, List<String> notation,int forward, List<Move> list){
+        if((x==4 && !gameBoard[x][y].getPlayerPiece() && gameBoard[x][y+yAddition].getPlayerPiece() && notation.get(notation.size()-1).equals(this.getNotation(x+2,y+yAddition,x,y+yAddition,"")) && gameBoard[x][y+yAddition] instanceof Pawn) || (x==3 && gameBoard[x][y].getPlayerPiece() && !gameBoard[x][y+yAddition].getPlayerPiece() && notation.get(notation.size()-1).equals(this.getNotation(x-2,y+yAddition,x,y+yAddition,"")) && gameBoard[x][y+yAddition] instanceof Pawn)){
+            Piece[][] possiblePosition = this.copy(gameBoard);
+            Pawn pawn = new Pawn(gameBoard[x][y].getPlayerPiece());
+            pawn.setMoved(true);
+            possiblePosition[x][y] = null;
+            possiblePosition[x][y+yAddition] = null;
+            possiblePosition[x + forward][y+yAddition] = pawn;
+            List<String> newNotation = this.generateNewNotation(notation, x, y, x + forward, y+yAddition);
+            Move move = new Move(x, y, x + forward, y+yAddition , possiblePosition, newNotation);
+            list.add(move);
+        }
     }
 
     public void pawnPromotion(Piece [][]gameBoard, int x, int y, List<String> notation,List<Move> list,int forward,int yIncrementer){

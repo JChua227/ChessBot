@@ -13,11 +13,12 @@ public class Driver{
     public static void main(String []args){
 
         List<String> list = new ArrayList<>();
-
+        list.add("a2-a3");
+        list.add("g7-g5");
 
 
         Bot bot = new Bot();
-        Move move = bot.getNextMove(list,0);
+        Move move = bot.getNextMove(list,2);
 
         bot.printBoard(move.getGameState());
         System.out.println(move.getNextMove());

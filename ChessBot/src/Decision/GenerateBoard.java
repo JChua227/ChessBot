@@ -39,9 +39,9 @@ public class GenerateBoard{
             gameBoard[1][x] = new Pawn(false);
         }
 
-        Pawn pawn = new Pawn(false);
+        Pawn pawn = new Pawn(true);
         pawn.setMoved(true);
-        gameBoard[4][0] = pawn;
+        gameBoard[3][7] = pawn;
     }
 
     public void fillRook(Piece [][]gameBoard){
