@@ -42,7 +42,7 @@ public class Bot {
         return miniMax(move, depth, turn, -2000000000, 2000000000, "");
     }
 
-
+    //TODO: not detecting win state
     public Move miniMax(Move move, int depth, boolean turn, double alpha, double beta, String moveNotation){
 
         if(evaluator.gameIsFinished(move)){
@@ -61,6 +61,10 @@ public class Bot {
         }
 
         List<Move> states = getAllPossiblePositions(move.getGameState(),turn,move.getMoveList());
+        if(states.size()==0) {
+            return new Move(move.getGameState(), 0, moveNotation, move.getMoveList());
+        }
+
         if(turn){
             Move maxEval = new Move(move.getGameState(),-2000000000,"");
             for(int x=0; x<states.size(); x++){

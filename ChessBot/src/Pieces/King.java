@@ -14,6 +14,7 @@ public class King extends Piece{
         return getPlayerPiece() + "King";
     }
 
+    //TODO: need to check if king is checked somehow
     public List<Move> getPossibleMoves(Piece [][]gameBoard, int x, int y, List<String> notation){
         List<Move> list = new ArrayList<>();
         if(x+1<gameBoard.length && y+1<gameBoard[0].length && (gameBoard[x+1][y+1]==null || gameBoard[x+1][y+1].getPlayerPiece()!=gameBoard[x][y].getPlayerPiece())){

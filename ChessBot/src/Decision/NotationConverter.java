@@ -43,5 +43,8 @@ public class NotationConverter {
         return this.notationRow;
     }
 
+    public int getXPosition(Character c){
+        return getNotationRow().indexOf(Integer.parseInt(String.valueOf(c)));
+    }
 
 }

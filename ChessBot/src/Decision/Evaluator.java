@@ -2,9 +2,24 @@ package Decision;
 
 import Pieces.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
+/*
+Material
+    Positional (number of moves compared to opponent)
+    Bishop pair bonuses
+    Castled king bonuses
+    Central pawns pushed bonuses
+    Early queen movement penalty
+    Connected rooks bonuses
+    King safety (half open, fully open files next to king, pawn shields)
+*/
+
+
 public class Evaluator{
+
+    private NotationConverter notationConverter = new NotationConverter();
 
     private static int[][]whiteBishopWorth;
     private static int[][]whitePawnWorth;
@@ -201,8 +216,12 @@ public class Evaluator{
         int total = 0;
         total += sumStaticPosition(gameBoard);
         total += sumPositionalWorth(gameBoard);
+
+
         return total;
     }
+
+
 
     public Move evaluatePosition(Move move, String nextMove){
         return new Move(move.getGameState(), evaluate(move.getGameState()), nextMove,move.getMoveList());
@@ -299,7 +318,7 @@ public class Evaluator{
         for(int x=0; x<move.getGameState().length; x++){
             for(int y=0; y<move.getGameState()[0].length; y++){
                 if(move.getGameState()[x][y] instanceof King){
-                    return !move.getGameState()[x][y].getPlayerPiece();
+                    return move.getGameState()[x][y].getPlayerPiece();
                 }
             }
         }
