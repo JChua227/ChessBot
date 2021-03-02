@@ -13,7 +13,7 @@ public class Bot {
 
     public Bot(){
         evaluator = new Evaluator();
-        generateBoard.create();
+        this.generateBoard.create();
     }
 
     public Move getNextMove(List<String> notation,int depth){
@@ -27,8 +27,8 @@ public class Bot {
         Move move = new Move(this.generateBoard.getGameBoard(),0,"", notation);
         this.generateBoard.playMoves(notation);
 
-        if(this.evaluator.gameIsFinished(move)){
-            if(evaluator.checkWinner(move)){
+        if(move.getKingCaptured()!=0){
+            if(move.getKingCaptured()==1){
                 return new Move(move.getGameState(),1000000000,"White won!");
             }
             else{
@@ -45,8 +45,8 @@ public class Bot {
     //TODO: not detecting win state
     public Move miniMax(Move move, int depth, boolean turn, double alpha, double beta, String moveNotation){
 
-        if(evaluator.gameIsFinished(move)){
-            if(evaluator.checkWinner(move)){
+        if(move.getKingCaptured()!=0){
+            if(move.getKingCaptured()==1){
                 return new Move(move.getGameState(),1000000000,moveNotation,move.getMoveList());
             }
             else{
@@ -61,6 +61,15 @@ public class Bot {
         }
 
         List<Move> states = getAllPossiblePositions(move.getGameState(),turn,move.getMoveList());
+
+        //visually seeing all positions generated
+        /*for(int x=0; x<states.size(); x++){
+            printBoard(states.get(x).getGameState());
+            System.out.println(states.get(x).getMoveList());
+            System.out.println("------------------------------------------------------------------------------------------------------------------------");
+        }*/
+
+        //TODO: this will never be reached, since the bot will forcefully choose the first available move as soon as it sees defeat is inevitable
         if(states.size()==0) {
             return new Move(move.getGameState(), 0, moveNotation, move.getMoveList());
         }
@@ -112,7 +121,7 @@ public class Bot {
         for(int x=0; x<gameBoard.length; x++){
             for(int y=0; y<gameBoard[0].length; y++){
                 if(gameBoard[x][y]!=null && player==gameBoard[x][y].getPlayerPiece()){
-                    list.addAll(gameBoard[x][y].getPossibleMoves(gameBoard, x, y, notation));
+                    list.addAll(gameBoard[x][y].getPossibleMoves(gameBoard, x, y, notation,true));
                 }
             }
         }

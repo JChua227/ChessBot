@@ -16,6 +16,8 @@ public class Move {
     private int evaluation;
     private List<String> moveList;
     private String nextMove;
+    private boolean validMove = true;
+    private int kingCaptured;
 
     public Move(int xSelectedPosition, int ySelectedPosition, int xLandedPosition, int yLandedPosition, Piece[][] gameState, int evaluation){
         this.xSelectedPosition = xSelectedPosition;
@@ -98,6 +100,22 @@ public class Move {
 
     public void setMoveList(String s){
         this.moveList.add(s);
+    }
+
+    public boolean getValidMove(){
+        return this.validMove;
+    }
+
+    public void setValidMove(boolean validMove){
+        this.validMove = validMove;
+    }
+
+    public int getKingCaptured(){
+        return this.kingCaptured;
+    }
+
+    public void setKingCaptured(int kingCaptured){
+        this.kingCaptured = kingCaptured;
     }
 
     public String getNextMove(){

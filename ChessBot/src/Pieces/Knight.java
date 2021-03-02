@@ -14,89 +14,33 @@ public class Knight extends Piece{
         return getPlayerPiece() + "Knight";
     }
 
-    public List<Move> getPossibleMoves(Piece [][]gameBoard, int x, int y, List<String> notation){
+    public List<Move> getPossibleMoves(Piece [][]gameBoard, int x, int y, List<String> notation, boolean validMoveChecker){
+
         List<Move> list = new ArrayList<>();
 
-        if(x+2<gameBoard.length && y+1<gameBoard[0].length && (gameBoard[x+2][y+1]==null || gameBoard[x+2][y+1].getPlayerPiece()!=gameBoard[x][y].getPlayerPiece())){
-            Piece[][] possiblePosition = this.copy(gameBoard);
-            Knight knight = new Knight(gameBoard[x][y].getPlayerPiece());
-            knight.setMoved(true);
-            possiblePosition[x][y] = null;
-            possiblePosition[x+2][y+1] = knight;
-            List<String> newNotation = this.generateNewNotation(notation, x, y, x+2, y+1);
-            Move move = new Move(x, y, x+2, y+1, possiblePosition, newNotation);
-            list.add(move);
-        }
-        if(x+2<gameBoard.length && y-1>-1 && (gameBoard[x+2][y-1]==null || gameBoard[x+2][y-1].getPlayerPiece()!=gameBoard[x][y].getPlayerPiece())){
-            Piece[][] possiblePosition = this.copy(gameBoard);
-            Knight knight = new Knight(gameBoard[x][y].getPlayerPiece());
-            knight.setMoved(true);
-            possiblePosition[x][y] = null;
-            possiblePosition[x+2][y-1] = knight;
-            List<String> newNotation = this.generateNewNotation(notation, x, y, x+2, y-1);
-            Move move = new Move(x, y, x+2, y-1, possiblePosition, newNotation);
-            list.add(move);
-        }
-        if(x+1<gameBoard.length && y-2>-1 && (gameBoard[x+1][y-2]==null || gameBoard[x+1][y-2].getPlayerPiece()!=gameBoard[x][y].getPlayerPiece())){
-            Piece[][] possiblePosition = this.copy(gameBoard);
-            Knight knight = new Knight(gameBoard[x][y].getPlayerPiece());
-            knight.setMoved(true);
-            possiblePosition[x][y] = null;
-            possiblePosition[x+1][y-2] = knight;
-            List<String> newNotation = this.generateNewNotation(notation, x, y, x+1, y-2);
-            Move move = new Move(x, y, x+1, y-2, possiblePosition, newNotation);
-            list.add(move);
-        }
-        if(x-1>-1 && y-2>-1 && (gameBoard[x-1][y-2]==null || gameBoard[x-1][y-2].getPlayerPiece()!=gameBoard[x][y].getPlayerPiece())){
-            Piece[][] possiblePosition = this.copy(gameBoard);
-            Knight knight = new Knight(gameBoard[x][y].getPlayerPiece());
-            knight.setMoved(true);
-            possiblePosition[x][y] = null;
-            possiblePosition[x-1][y-2] = knight;
-            List<String> newNotation = this.generateNewNotation(notation, x, y, x-1, y-2);
-            Move move = new Move(x, y, x-1, y-2, possiblePosition, newNotation);
-            list.add(move);
-        }
-        if(x-2>-1 && y-1>-1 && (gameBoard[x-2][y-1]==null || gameBoard[x-2][y-1].getPlayerPiece()!=gameBoard[x][y].getPlayerPiece())){
-            Piece[][] possiblePosition = this.copy(gameBoard);
-            Knight knight = new Knight(gameBoard[x][y].getPlayerPiece());
-            knight.setMoved(true);
-            possiblePosition[x][y] = null;
-            possiblePosition[x-2][y-1] = knight;
-            List<String> newNotation = this.generateNewNotation(notation, x, y, x-2, y-1);
-            Move move = new Move(x, y, x-2, y-1, possiblePosition, newNotation);
-            list.add(move);
-        }
-        if(x-2>-1 && y+1<gameBoard[0].length && (gameBoard[x-2][y+1]==null || gameBoard[x-2][y+1].getPlayerPiece()!=gameBoard[x][y].getPlayerPiece())){
-            Piece[][] possiblePosition = this.copy(gameBoard);
-            Knight knight = new Knight(gameBoard[x][y].getPlayerPiece());
-            knight.setMoved(true);
-            possiblePosition[x][y] = null;
-            possiblePosition[x-2][y+1] = knight;
-            List<String> newNotation = this.generateNewNotation(notation, x, y, x-2, y+1);
-            Move move = new Move(x, y, x-2, y+1, possiblePosition,newNotation);
-            list.add(move);
-        }
-        if(x-1>-1 && y+2<gameBoard[0].length && (gameBoard[x-1][y+2]==null || gameBoard[x-1][y+2].getPlayerPiece()!=gameBoard[x][y].getPlayerPiece())){
-            Piece[][] possiblePosition = this.copy(gameBoard);
-            Knight knight = new Knight(gameBoard[x][y].getPlayerPiece());
-            knight.setMoved(true);
-            possiblePosition[x][y] = null;
-            possiblePosition[x-1][y+2] = knight;
-            List<String> newNotation = this.generateNewNotation(notation, x, y, x-1, y+2);
-            Move move = new Move(x, y, x-1, y+2, possiblePosition, newNotation);
-            list.add(move);
-        }
-        if(x+1<gameBoard.length && y+2<gameBoard[0].length && (gameBoard[x+1][y+2]==null || gameBoard[x+1][y+2].getPlayerPiece()!=gameBoard[x][y].getPlayerPiece())){
-            Piece[][] possiblePosition = this.copy(gameBoard);
-            Knight knight = new Knight(gameBoard[x][y].getPlayerPiece());
-            knight.setMoved(true);
-            possiblePosition[x][y] = null;
-            possiblePosition[x+1][y+2] = knight;
-            List<String> newNotation = this.generateNewNotation(notation, x, y, x+1, y+2);
-            Move move = new Move(x, y, x+1, y+2, possiblePosition, newNotation);
-            list.add(move);
-        }
+        possibleKnightMoves(list,x,y,2,1,gameBoard,notation);
+        possibleKnightMoves(list,x,y,2,-1,gameBoard,notation);
+        possibleKnightMoves(list,x,y,1,-2,gameBoard,notation);
+        possibleKnightMoves(list,x,y,-1,-2,gameBoard,notation);
+        possibleKnightMoves(list,x,y,-2,-1,gameBoard,notation);
+        possibleKnightMoves(list,x,y,-2,1,gameBoard,notation);
+        possibleKnightMoves(list,x,y,-1,2,gameBoard,notation);
+        possibleKnightMoves(list,x,y,1,2,gameBoard,notation);
+
         return list;
+    }
+
+    public void possibleKnightMoves(List<Move> list,int x, int y,int xIncrement, int yIncrement,Piece [][]gameBoard,List<String> notation){
+        if(x+xIncrement<gameBoard.length && x+xIncrement>-1 && y+yIncrement<gameBoard[0].length && y+yIncrement>-1 && (gameBoard[x+xIncrement][y+yIncrement]==null || gameBoard[x+xIncrement][y+yIncrement].getPlayerPiece()!=gameBoard[x][y].getPlayerPiece())){
+            Piece[][] possiblePosition = this.copy(gameBoard);
+            Knight knight = new Knight(gameBoard[x][y].getPlayerPiece());
+            knight.setMoved(true);
+            possiblePosition[x][y] = null;
+            possiblePosition[x+xIncrement][y+yIncrement] = knight;
+            List<String> newNotation = this.generateNewNotation(notation, x, y, x+xIncrement, y+yIncrement);
+            Move move = new Move(x, y, x+xIncrement, y+yIncrement, possiblePosition, newNotation);
+            move.setKingCaptured(isEnemyKing(gameBoard,x+xIncrement,y+yIncrement));
+            list.add(move);
+        }
     }
 }

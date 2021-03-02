@@ -20,12 +20,14 @@ public class GenerateBoard{
 
     public void create(){
         Piece [][]gameBoard = new Piece[8][8];
+
         fillPawn(gameBoard);
         fillRook(gameBoard);
         fillBishop(gameBoard);
         fillKnight(gameBoard);
         fillQueen(gameBoard);
         fillKing(gameBoard);
+
         this.gameBoard = gameBoard;
     }
 

@@ -76,7 +76,7 @@ public abstract class Piece{
         return temp;
     }
 
-    public abstract List<Move> getPossibleMoves(Piece[][] gameBoard, int x, int y,List<String> notation);
+    public abstract List<Move> getPossibleMoves(Piece[][] gameBoard, int x, int y,List<String> notation,boolean validMoveChecker);
 
     //generates new notation
     public List<String> generateNewNotation(List<String> notation, int x, int y, int xDestination, int yDestination){
@@ -96,5 +96,29 @@ public abstract class Piece{
 
     public String getNotation(int x, int y, int xDestination, int yDestination, String s){
         return getNotationConverter().getNotationColumn(y) + "" + getNotationConverter().getNotationRow(x) + "-" + getNotationConverter().getNotationColumn(yDestination) + getNotationConverter().getNotationRow(xDestination) + s;
+    }
+
+    public int isEnemyKing(Piece[][] gameBoard, int xHolder, int yHolder){
+        if(gameBoard[xHolder][yHolder] instanceof King){
+            if(gameBoard[xHolder][yHolder].getPlayerPiece()){
+                return -1;
+            }
+            else{
+                return 1;
+            }
+        }
+        return 0;
+    }
+
+    public List<Move> getAllPossiblePositions(Piece[][]gameBoard,boolean player,List<String> notation,boolean validMoveChecker){
+        List<Move> list = new ArrayList<>();
+        for(int x=0; x<gameBoard.length; x++){
+            for(int y=0; y<gameBoard[0].length; y++){
+                if(gameBoard[x][y]!=null && player==gameBoard[x][y].getPlayerPiece()){
+                    list.addAll(gameBoard[x][y].getPossibleMoves(gameBoard, x, y, notation,validMoveChecker));
+                }
+            }
+        }
+        return list;
     }
 }

@@ -14,205 +14,45 @@ public class Queen extends Piece{
         return getPlayerPiece() + "Queen";
     }
 
-    public List<Move> getPossibleMoves(Piece [][]gameBoard, int x, int y, List<String> notation){
+    public List<Move> getPossibleMoves(Piece [][]gameBoard, int x, int y, List<String> notation, boolean validMoveChecker){
         List<Move> list = new ArrayList<>();
 
-        int xHolder = x+1;
-        int yHolder = y+1;
-        while(xHolder!=gameBoard.length && yHolder!=gameBoard[0].length && gameBoard[xHolder][yHolder]==null){
-            Piece[][] possiblePosition = this.copy(gameBoard);
-            Queen queen = new Queen(gameBoard[x][y].getPlayerPiece());
-            queen.setMoved(true);
-            possiblePosition[x][y] = null;
-            possiblePosition[xHolder][yHolder] = queen;
-            List<String> newNotation = this.generateNewNotation(notation, x, y, xHolder, yHolder);
-            Move move = new Move(x, y, xHolder, yHolder, possiblePosition, newNotation);
-            list.add(move);
-            xHolder++;
-            yHolder++;
-            if(xHolder!=gameBoard.length && yHolder!=gameBoard[0].length && gameBoard[xHolder][yHolder]!=null && gameBoard[xHolder][yHolder].getPlayerPiece()!=gameBoard[x][y].getPlayerPiece()){
-                Piece[][] possibleTakePosition = this.copy(gameBoard);
-                Queen queenTake = new Queen(gameBoard[x][y].getPlayerPiece());
-                queenTake.setMoved(true);
-                possibleTakePosition[x][y] = null;
-                possibleTakePosition[xHolder][yHolder] = queenTake;
-                List<String> newNotation2 = this.generateNewNotation(notation, x, y, xHolder, yHolder);
-                Move take = new Move(x, y, xHolder, yHolder, possiblePosition, newNotation2);
-                list.add(take);
-            }
-        }
-
-        xHolder = x-1;
-        yHolder = y-1;
-        while(xHolder!=-1 && yHolder!=-1 && gameBoard[xHolder][yHolder]==null){
-            Piece[][] possiblePosition = this.copy(gameBoard);
-            Queen queen = new Queen(gameBoard[x][y].getPlayerPiece());
-            queen.setMoved(true);
-            possiblePosition[x][y] = null;
-            possiblePosition[xHolder][yHolder] = queen;
-            List<String> newNotation = this.generateNewNotation(notation, x, y, xHolder, yHolder);
-            Move move = new Move(x, y, xHolder, yHolder, possiblePosition, newNotation);
-            list.add(move);
-            xHolder--;
-            yHolder--;
-            if(xHolder!=-1 && yHolder!=-1 && gameBoard[xHolder][yHolder]!=null && gameBoard[xHolder][yHolder].getPlayerPiece()!=gameBoard[x][y].getPlayerPiece()){
-                Piece[][] possibleTakePosition = this.copy(gameBoard);
-                Queen queenTake = new Queen(gameBoard[x][y].getPlayerPiece());
-                queenTake.setMoved(true);
-                possibleTakePosition[x][y] = null;
-                possibleTakePosition[xHolder][yHolder] = queenTake;
-                List<String> newNotation2 = this.generateNewNotation(notation, x, y, xHolder, yHolder);
-                Move take = new Move(x, y, xHolder, yHolder, possiblePosition, newNotation2);
-                list.add(take);
-            }
-        }
-
-        xHolder = x+1;
-        yHolder = y-1;
-        while(xHolder!=gameBoard.length && yHolder!=-1 && gameBoard[xHolder][yHolder]==null){
-            Piece[][] possiblePosition = this.copy(gameBoard);
-            Queen queen = new Queen(gameBoard[x][y].getPlayerPiece());
-            queen.setMoved(true);
-            possiblePosition[x][y] = null;
-            possiblePosition[xHolder][yHolder] = queen;
-            List<String> newNotation = this.generateNewNotation(notation, x, y, xHolder, yHolder);
-            Move move = new Move(x, y, xHolder, yHolder, possiblePosition, newNotation);
-            list.add(move);
-            xHolder++;
-            yHolder--;
-            if(xHolder!=gameBoard.length && yHolder!=-1 && gameBoard[xHolder][yHolder]!=null && gameBoard[xHolder][yHolder].getPlayerPiece()!=gameBoard[x][y].getPlayerPiece()){
-                Piece[][] possibleTakePosition = this.copy(gameBoard);
-                Queen queenTake = new Queen(gameBoard[x][y].getPlayerPiece());
-                queenTake.setMoved(true);
-                possibleTakePosition[x][y] = null;
-                possibleTakePosition[xHolder][yHolder] = queenTake;
-                List<String> newNotation2 = this.generateNewNotation(notation, x, y, xHolder, yHolder);
-                Move take = new Move(x, y, xHolder, yHolder, possiblePosition, newNotation2);
-                list.add(take);
-            }
-        }
-
-        xHolder = x-1;
-        yHolder = y+1;
-        while(xHolder!=-1 && yHolder!=gameBoard[0].length && gameBoard[xHolder][yHolder]==null){
-            Piece[][] possiblePosition = this.copy(gameBoard);
-            Queen queen = new Queen(gameBoard[x][y].getPlayerPiece());
-            queen.setMoved(true);
-            possiblePosition[x][y] = null;
-            possiblePosition[xHolder][yHolder] = queen;
-            List<String> newNotation = this.generateNewNotation(notation, x, y, xHolder, yHolder);
-            Move move = new Move(x, y, xHolder, yHolder, possiblePosition, newNotation);
-            list.add(move);
-            xHolder--;
-            yHolder++;
-            if(xHolder!=-1 && yHolder!=gameBoard[0].length && gameBoard[xHolder][yHolder]!=null && gameBoard[xHolder][yHolder].getPlayerPiece()!=gameBoard[x][y].getPlayerPiece()){
-                Piece[][] possibleTakePosition = this.copy(gameBoard);
-                Queen queenTake = new Queen(gameBoard[x][y].getPlayerPiece());
-                queenTake.setMoved(true);
-                possibleTakePosition[x][y] = null;
-                possibleTakePosition[xHolder][yHolder] = queenTake;
-                List<String> newNotation2 = this.generateNewNotation(notation, x, y, xHolder, yHolder);
-                Move take = new Move(x, y, xHolder, yHolder, possiblePosition, newNotation2);
-                list.add(take);
-            }
-        }
-
-        xHolder = x+1;
-        yHolder = y;
-        while(xHolder!=gameBoard.length && gameBoard[xHolder][yHolder]==null){
-            Piece[][] possiblePosition = this.copy(gameBoard);
-            Queen queen = new Queen(gameBoard[x][y].getPlayerPiece());
-            queen.setMoved(true);
-            possiblePosition[x][y] = null;
-            possiblePosition[xHolder][yHolder] = queen;
-            List<String> newNotation = this.generateNewNotation(notation, x, y, xHolder, yHolder);
-            Move move = new Move(x, y, xHolder, yHolder, possiblePosition, newNotation);
-            list.add(move);
-            xHolder++;
-            if(xHolder!=gameBoard.length && gameBoard[xHolder][yHolder]!=null && gameBoard[xHolder][yHolder].getPlayerPiece()!=gameBoard[x][y].getPlayerPiece()){
-                Piece[][] possibleTakePosition = this.copy(gameBoard);
-                Queen queenTake = new Queen(gameBoard[x][y].getPlayerPiece());
-                queenTake.setMoved(true);
-                possibleTakePosition[x][y] = null;
-                possibleTakePosition[xHolder][yHolder] = queenTake;
-                List<String> newNotation2 = this.generateNewNotation(notation, x, y, xHolder, yHolder);
-                Move take = new Move(x, y, xHolder, yHolder, possiblePosition, newNotation2);
-                list.add(take);
-            }
-        }
-
-        xHolder = x-1;
-        yHolder = y;
-        while(xHolder!=-1 && gameBoard[xHolder][yHolder]==null){
-            Piece[][] possiblePosition = this.copy(gameBoard);
-            Queen queen = new Queen(gameBoard[x][y].getPlayerPiece());
-            queen.setMoved(true);
-            possiblePosition[x][y] = null;
-            possiblePosition[xHolder][yHolder] = queen;
-            List<String> newNotation = this.generateNewNotation(notation, x, y, xHolder, yHolder);
-            Move move = new Move(x, y, xHolder, yHolder, possiblePosition, newNotation);
-            list.add(move);
-            xHolder--;
-            if(xHolder!=-1 && gameBoard[xHolder][yHolder]!=null && !gameBoard[xHolder][yHolder].getPlayerPiece()){
-                Piece[][] possibleTakePosition = this.copy(gameBoard);
-                Queen queenTake = new Queen(gameBoard[x][y].getPlayerPiece());
-                queenTake.setMoved(true);
-                possibleTakePosition[x][y] = null;
-                possibleTakePosition[xHolder][yHolder] = queenTake;
-                List<String> newNotation2 = this.generateNewNotation(notation, x, y, xHolder, yHolder);
-                Move take = new Move(x, y, xHolder, yHolder, possiblePosition, newNotation2);
-                list.add(take);
-            }
-        }
-
-        xHolder = x;
-        yHolder = y+1;
-        while(yHolder!=gameBoard[0].length && gameBoard[xHolder][yHolder]==null){
-            Piece[][] possiblePosition = this.copy(gameBoard);
-            Queen queen = new Queen(gameBoard[x][y].getPlayerPiece());
-            queen.setMoved(true);
-            possiblePosition[x][y] = null;
-            possiblePosition[xHolder][yHolder] = queen;
-            List<String> newNotation = this.generateNewNotation(notation, x, y, xHolder, yHolder);
-            Move move = new Move(x, y, xHolder, yHolder, possiblePosition, newNotation);
-            list.add(move);
-            yHolder++;
-            if(yHolder!=gameBoard[0].length && gameBoard[xHolder][yHolder]!=null && !gameBoard[xHolder][yHolder].getPlayerPiece()){
-                Piece[][] possibleTakePosition = this.copy(gameBoard);
-                Queen queenTake = new Queen(gameBoard[x][y].getPlayerPiece());
-                queenTake.setMoved(true);
-                possibleTakePosition[x][y] = null;
-                possibleTakePosition[xHolder][yHolder] = queenTake;
-                List<String> newNotation2 = this.generateNewNotation(notation, x, y, xHolder, yHolder);
-                Move take = new Move(x, y, xHolder, yHolder, possiblePosition, newNotation2);
-                list.add(take);
-            }
-        }
-
-        xHolder = x;
-        yHolder = y-1;
-        while(yHolder!=-1 && gameBoard[xHolder][yHolder]==null){
-            Piece[][] possiblePosition = this.copy(gameBoard);
-            Queen queen = new Queen(gameBoard[x][y].getPlayerPiece());
-            queen.setMoved(true);
-            possiblePosition[x][y] = null;
-            possiblePosition[xHolder][yHolder] = queen;
-            List<String> newNotation = this.generateNewNotation(notation, x, y, xHolder, yHolder);
-            Move move = new Move(x, y, xHolder, yHolder, possiblePosition, newNotation);
-            list.add(move);
-            yHolder--;
-            if(yHolder!=-1 && gameBoard[xHolder][yHolder]!=null && !gameBoard[xHolder][yHolder].getPlayerPiece()){
-                Piece[][] possibleTakePosition = this.copy(gameBoard);
-                Queen queenTake = new Queen(gameBoard[x][y].getPlayerPiece());
-                queenTake.setMoved(true);
-                possibleTakePosition[x][y] = null;
-                possibleTakePosition[xHolder][yHolder] = queenTake;
-                List<String> newNotation2 = this.generateNewNotation(notation, x, y, xHolder, yHolder);
-                Move take = new Move(x, y, xHolder, yHolder, possiblePosition, newNotation2);
-                list.add(take);
-            }
-        }
+        possibleQueenMoves(list,x+1,y+1,x,y,1,1,gameBoard,notation);
+        possibleQueenMoves(list,x-1,y-1,x,y,-1,-1,gameBoard,notation);
+        possibleQueenMoves(list,x+1,y-1,x,y,1,-1,gameBoard,notation);
+        possibleQueenMoves(list,x-1,y+1,x,y,-1,1,gameBoard,notation);
+        possibleQueenMoves(list,x+1,y,x,y,1,0,gameBoard,notation);
+        possibleQueenMoves(list,x-1,y,x,y,-1,0,gameBoard,notation);
+        possibleQueenMoves(list,x,y+1,x,y,0,1,gameBoard,notation);
+        possibleQueenMoves(list,x,y-1,x,y,0,-1,gameBoard,notation);
 
         return list;
+    }
+
+
+    public void possibleQueenMoves(List<Move> list,int xHolder,int yHolder,int x, int y,int xIncrement, int yIncrement,Piece [][]gameBoard,List<String> notation){
+        while(xHolder!=gameBoard.length && xHolder!=-1 && yHolder!=gameBoard[0].length && yHolder!=-1 && gameBoard[xHolder][yHolder]==null){
+            Piece[][] possiblePosition = this.copy(gameBoard);
+            Queen queen = new Queen(gameBoard[x][y].getPlayerPiece());
+            queen.setMoved(true);
+            possiblePosition[x][y] = null;
+            possiblePosition[xHolder][yHolder] = queen;
+            List<String> newNotation = this.generateNewNotation(notation, x, y, xHolder, yHolder);
+            Move move = new Move(x, y, xHolder, yHolder, possiblePosition, newNotation);
+            list.add(move);
+            xHolder+=xIncrement;
+            yHolder+=yIncrement;
+            if(xHolder!=gameBoard.length && xHolder!=-1 && yHolder!=gameBoard[0].length && yHolder!=-1 && gameBoard[xHolder][yHolder]!=null && gameBoard[xHolder][yHolder].getPlayerPiece()!=gameBoard[x][y].getPlayerPiece()){
+                Piece[][] possibleTakePosition = this.copy(gameBoard);
+                Queen queenTake = new Queen(gameBoard[x][y].getPlayerPiece());
+                queenTake.setMoved(true);
+                possibleTakePosition[x][y] = null;
+                possibleTakePosition[xHolder][yHolder] = queenTake;
+                List<String> newNotation2 = this.generateNewNotation(notation, x, y, xHolder, yHolder);
+                Move take = new Move(x, y, xHolder, yHolder, possibleTakePosition, newNotation2);
+                take.setKingCaptured(isEnemyKing(gameBoard,xHolder,yHolder));
+                list.add(take);
+            }
+        }
     }
 }
