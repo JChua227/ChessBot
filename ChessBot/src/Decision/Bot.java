@@ -42,7 +42,7 @@ public class Bot {
         return miniMax(move, depth, turn, -2000000000, 2000000000, "");
     }
 
-    //TODO: not detecting win state
+
     public Move miniMax(Move move, int depth, boolean turn, double alpha, double beta, String moveNotation){
 
         if(move.getKingCaptured()!=0){
@@ -63,13 +63,11 @@ public class Bot {
         List<Move> states = getAllPossiblePositions(move.getGameState(),turn,move.getMoveList());
 
         //visually seeing all positions generated
-        /*for(int x=0; x<states.size(); x++){
+        for(int x=0; x<states.size(); x++){
             printBoard(states.get(x).getGameState());
             System.out.println(states.get(x).getMoveList());
             System.out.println("------------------------------------------------------------------------------------------------------------------------");
-        }*/
-
-        //TODO: this will never be reached, since the bot will forcefully choose the first available move as soon as it sees defeat is inevitable
+        }
         if(states.size()==0) {
             return new Move(move.getGameState(), 0, moveNotation, move.getMoveList());
         }

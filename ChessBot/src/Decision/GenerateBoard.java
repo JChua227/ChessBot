@@ -23,9 +23,9 @@ public class GenerateBoard{
 
         fillPawn(gameBoard);
         fillRook(gameBoard);
-        /*fillBishop(gameBoard);
+        fillBishop(gameBoard);
         fillKnight(gameBoard);
-        fillQueen(gameBoard);*/
+        fillQueen(gameBoard);
         fillKing(gameBoard);
 
         this.gameBoard = gameBoard;
@@ -130,7 +130,6 @@ public class GenerateBoard{
                     king.setMoved(true);
                     getGameBoard()[xEndPosition][yEndPosition] = king;
                     if((yPosition-yEndPosition)%2==0){
-                        System.out.println("HERE");
                         Rook rook = new Rook(getGameBoard()[xPosition][yPosition].getPlayerPiece());
                         rook.setMoved(true);
                         if(yPosition>yEndPosition){

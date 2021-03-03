@@ -15,7 +15,7 @@ public class Pawn extends Piece{
         return getPlayerPiece() + "Pawn";
     }
 
-    //TODO: check for en passant
+
     public List<Move> getPossibleMoves(Piece [][]gameBoard, int x, int y, List<String> notation, boolean validMoveChecker){
         int forward = -1;
         if(!gameBoard[x][y].getPlayerPiece()){
