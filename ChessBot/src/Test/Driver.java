@@ -13,13 +13,16 @@ public class Driver{
     public static void main(String []args){
 
         List<String> list = new ArrayList<>();
-
+        list.add("e1-g1");
 
 
         Bot bot = new Bot();
-        Move move = bot.getNextMove(list,2);
-
+        Move move = bot.getNextMove(list,0);
         bot.printBoard(move.getGameState());
+        System.out.println("----------------------------------------------------------------------------------------------");
+        Bot futureBot = new Bot();
+        move = futureBot.getNextMove(list,1);
+        futureBot.printBoard(move.getGameState());
         System.out.println(move.getNextMove());
         double evaluation = move.getEvaluation();
         System.out.println("Evaluation: " + evaluation);

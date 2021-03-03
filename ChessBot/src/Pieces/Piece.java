@@ -110,17 +110,6 @@ public abstract class Piece{
         return 0;
     }
 
-    public boolean checkLegalMove(Piece[][] gameBoard,boolean player, String s){
-        List<String> notation = Arrays.asList(s);
-        List<Move> nextPossibleMoves = getAllPossiblePositions(gameBoard,!player,notation,false);
-        for(int a=0; a<nextPossibleMoves.size(); a++){
-            if(nextPossibleMoves.get(a).getKingCaptured()!=0){
-                return false;
-            }
-        }
-        return true;
-    }
-
     public List<Move> getAllPossiblePositions(Piece[][]gameBoard,boolean player,List<String> notation,boolean validMoveChecker){
         List<Move> list = new ArrayList<>();
         for(int x=0; x<gameBoard.length; x++){

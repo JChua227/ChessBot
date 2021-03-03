@@ -3,6 +3,7 @@ package Decision;
 import Pieces.Piece;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Bot {
@@ -60,14 +61,17 @@ public class Bot {
             return evaluator.evaluatePosition(move,moveNotation);
         }
 
-        List<Move> states = getAllPossiblePositions(move.getGameState(),turn,move.getMoveList());
+        List<Move> states = getAllPossiblePositions(move.getGameState(),turn,move.getMoveList(),true);
+        filterPossibleMoves(states,turn);
 
         //visually seeing all positions generated
-        for(int x=0; x<states.size(); x++){
+        /*for(int x=0; x<states.size(); x++){
             printBoard(states.get(x).getGameState());
+            System.out.println(states.get(x).getMoveList().get(states.get(x).getMoveList().size()-1));
             System.out.println(states.get(x).getMoveList());
             System.out.println("------------------------------------------------------------------------------------------------------------------------");
-        }
+        }*/
+
         if(states.size()==0) {
             return new Move(move.getGameState(), 0, moveNotation, move.getMoveList());
         }
@@ -114,12 +118,33 @@ public class Bot {
     }
 
 
-    public static List<Move> getAllPossiblePositions(Piece[][]gameBoard,boolean player,List<String> notation){
+    public void filterPossibleMoves(List<Move> states,boolean turn){
+        for(int x=0; x<states.size(); x++) {
+            if (!checkLegalMove(states.get(x).getGameState(), turn, states.get(x).getMoveList().get(states.get(x).getMoveList().size()-1))) {
+                states.remove(x);
+                x--;
+            }
+        }
+    }
+
+    public boolean checkLegalMove(Piece[][] gameBoard,boolean player, String s){
+        List<String> notation = Arrays.asList(s);
+        List<Move> nextPossibleMoves = getAllPossiblePositions(gameBoard,!player,notation,false);
+        for(int a=0; a<nextPossibleMoves.size(); a++){
+            if(nextPossibleMoves.get(a).getKingCaptured()!=0){
+                return false;
+            }
+        }
+        return true;
+    }
+
+
+    public static List<Move> getAllPossiblePositions(Piece[][]gameBoard,boolean player,List<String> notation,boolean validMoveChecker){
         List<Move> list = new ArrayList<>();
         for(int x=0; x<gameBoard.length; x++){
             for(int y=0; y<gameBoard[0].length; y++){
                 if(gameBoard[x][y]!=null && player==gameBoard[x][y].getPlayerPiece()){
-                    list.addAll(gameBoard[x][y].getPossibleMoves(gameBoard, x, y, notation,true));
+                    list.addAll(gameBoard[x][y].getPossibleMoves(gameBoard, x, y, notation,validMoveChecker));
                 }
             }
         }

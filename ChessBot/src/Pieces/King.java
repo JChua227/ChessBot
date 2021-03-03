@@ -77,7 +77,6 @@ public class King extends Piece{
         List<String> list = new ArrayList<>();
         list.add(getNotation(x,y,x,y+direction,"").split("-",2)[1]);
         list.add(getNotation(x,y,x,y+direction+direction,"").split("-",2)[1]);
-        System.out.println(s  + " " + nextPossibleMoves.get(0).getMoveList());
 
         for(int a=0; a<nextPossibleMoves.size(); a++){
             for(int b=0; b<list.size(); b++){
