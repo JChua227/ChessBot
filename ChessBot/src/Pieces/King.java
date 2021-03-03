@@ -62,7 +62,7 @@ public class King extends Piece{
                 List<String> newNotation = this.generateNewNotation(notation, x, y, x, y + direction + direction);
                 Move move = new Move(x, y, x, y + direction + direction, possiblePosition, newNotation);
 
-                if(validMoveChecker && !checkValidCastle(gameBoard,x,y,direction,newNotation)){
+                if(validMoveChecker && !checkValidCastle(gameBoard,x,y,direction,newNotation.get(newNotation.size()-1))){
                     return;
                 }
                 list.add(move);
@@ -72,14 +72,13 @@ public class King extends Piece{
     }
 
 
-    public boolean checkValidCastle(Piece[][]gameBoard, int x, int y, int direction,List<String> notation){
-        System.out.println(notation);
-
-        //TODO: is it possible to optimize getAllPossiblePositions to only get the next notation instead of appending everything prior?
+    public boolean checkValidCastle(Piece[][]gameBoard, int x, int y, int direction,String s){
+        List<String> notation = Arrays.asList(s);
         List<Move> nextPossibleMoves = getAllPossiblePositions(gameBoard,!gameBoard[x][y].getPlayerPiece(),notation,false);
         List<String> list = new ArrayList<>();
         list.add(getNotation(x,y,x,y+direction,"").split("-",2)[1]);
         list.add(getNotation(x,y,x,y+direction+direction,"").split("-",2)[1]);
+        System.out.println(s  + " " + nextPossibleMoves.get(0).getMoveList());
 
         for(int a=0; a<nextPossibleMoves.size(); a++){
             for(int b=0; b<list.size(); b++){

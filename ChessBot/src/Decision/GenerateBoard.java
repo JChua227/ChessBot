@@ -23,9 +23,9 @@ public class GenerateBoard{
 
         fillPawn(gameBoard);
         fillRook(gameBoard);
-        fillBishop(gameBoard);
+        /*fillBishop(gameBoard);
         fillKnight(gameBoard);
-        fillQueen(gameBoard);
+        fillQueen(gameBoard);*/
         fillKing(gameBoard);
 
         this.gameBoard = gameBoard;

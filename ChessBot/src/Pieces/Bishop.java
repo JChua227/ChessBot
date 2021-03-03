@@ -18,15 +18,15 @@ public class Bishop extends Piece{
 
         List<Move> list = new ArrayList<>();
 
-        possibleBishopMoves(list,x+1,y+1,x,y,1,1,gameBoard,notation);
-        possibleBishopMoves(list,x-1,y-1,x,y,-1,-1,gameBoard,notation);
-        possibleBishopMoves(list,x+1,y-1,x,y,1,-1,gameBoard,notation);
-        possibleBishopMoves(list,x-1,y+1,x,y,-1,1,gameBoard,notation);
+        possibleBishopMoves(list,x+1,y+1,x,y,1,1,gameBoard,notation,validMoveChecker);
+        possibleBishopMoves(list,x-1,y-1,x,y,-1,-1,gameBoard,notation,validMoveChecker);
+        possibleBishopMoves(list,x+1,y-1,x,y,1,-1,gameBoard,notation,validMoveChecker);
+        possibleBishopMoves(list,x-1,y+1,x,y,-1,1,gameBoard,notation,validMoveChecker);
 
         return list;
     }
 
-    public void possibleBishopMoves(List<Move> list,int xHolder,int yHolder,int x, int y,int xIncrement, int yIncrement,Piece [][]gameBoard,List<String> notation){
+    public void possibleBishopMoves(List<Move> list,int xHolder,int yHolder,int x, int y,int xIncrement, int yIncrement,Piece [][]gameBoard,List<String> notation,boolean validMoveChecker){
 
         while(xHolder!=gameBoard.length && xHolder!=-1 && yHolder!=gameBoard[0].length && yHolder!=-1 && gameBoard[xHolder][yHolder]==null){
             Piece[][] possiblePosition = this.copy(gameBoard);
@@ -36,6 +36,11 @@ public class Bishop extends Piece{
             possiblePosition[xHolder][yHolder] = bishop;
             List<String> newNotation = this.generateNewNotation(notation, x, y, xHolder, yHolder);
             Move move = new Move(x, y, xHolder, yHolder, possiblePosition,newNotation);
+
+            /*if(validMoveChecker && !checkLegalMove(gameBoard,x,y,newNotation)){
+                return;
+            }*/
+
             list.add(move);
             xHolder+=xIncrement;
             yHolder+=yIncrement;
