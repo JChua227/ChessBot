@@ -129,6 +129,19 @@ public class GenerateBoard{
                     King king = new King(getGameBoard()[xPosition][yPosition].getPlayerPiece());
                     king.setMoved(true);
                     getGameBoard()[xEndPosition][yEndPosition] = king;
+                    if((yPosition-yEndPosition)%2==0){
+                        System.out.println("HERE");
+                        Rook rook = new Rook(getGameBoard()[xPosition][yPosition].getPlayerPiece());
+                        rook.setMoved(true);
+                        if(yPosition>yEndPosition){
+                            getGameBoard()[xPosition][yPosition-1] = rook;
+                            getGameBoard()[xPosition][0] = null;
+                        }
+                        else{
+                            getGameBoard()[xPosition][yPosition+1] = rook;
+                            getGameBoard()[xPosition][7] = null;
+                        }
+                    }
                 } else {
                     System.out.println("Error: Accessing null piece in user move list");
                     System.exit(-1);

@@ -3,21 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="dddfbc49-8f15-41f5-ba19-8fdd95a02b3e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ChessBot/Decision/Bot.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ChessBot/Decision/Bot.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ChessBot/Decision/Evaluator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ChessBot/Decision/Evaluator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ChessBot/Decision/GenerateBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ChessBot/Decision/GenerateBoard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ChessBot/Decision/NotationConverter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ChessBot/Decision/NotationConverter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ChessBot/Pieces/King.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ChessBot/Pieces/King.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ChessBot/Test/Driver.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ChessBot/Test/Driver.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Decision/Bot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Decision/Bot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Decision/Evaluator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Decision/Evaluator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Decision/GenerateBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Decision/GenerateBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Decision/NotationConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Decision/NotationConverter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pieces/King.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pieces/King.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Test/Driver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Test/Driver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -35,21 +23,13 @@
   </component>
   <component name="ProjectId" id="1VbGMG0VTXVcqWXvM5Ms0hfub0R" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/IdeaProjects/Maze" />
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunManager" selected="Application.Driver">
     <configuration name="ChessGame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -79,6 +59,7 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -97,12 +78,17 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1614723310462">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1614723310462" />
   </component>
 </project>
