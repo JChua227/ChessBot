@@ -13,15 +13,27 @@ public class Driver{
     public static void main(String []args){
 
         List<String> list = new ArrayList<>();
-        list.add("e1-g1");
 
+        //bot plays against itself
+        /*double evaluation = 0;
+        while(evaluation!=1000000000 || evaluation!=-1000000000){
+            Bot tempBot = new Bot();
+            Move tempMove = tempBot.getNextMove(list,0);
+            tempBot.printBoard(tempMove.getGameState());
+            System.out.println("----------------------------------------------------------------------------------------------");
+            Bot bot = new Bot();
+            Move move = bot.getNextMove(list,3);
+            list.add(move.getNextMove());
+            System.out.println(move.getNextMove() + " " + evaluation);
+            evaluation = move.getEvaluation();
+        }*/
 
         Bot bot = new Bot();
         Move move = bot.getNextMove(list,0);
         bot.printBoard(move.getGameState());
         System.out.println("----------------------------------------------------------------------------------------------");
         Bot futureBot = new Bot();
-        move = futureBot.getNextMove(list,1);
+        move = futureBot.getNextMove(list,4);
         futureBot.printBoard(move.getGameState());
         System.out.println(move.getNextMove());
         double evaluation = move.getEvaluation();

@@ -46,15 +46,7 @@ public class Bot {
 
     public Move miniMax(Move move, int depth, boolean turn, double alpha, double beta, String moveNotation){
 
-        if(move.getKingCaptured()!=0){
-            if(move.getKingCaptured()==1){
-                return new Move(move.getGameState(),1000000000,moveNotation,move.getMoveList());
-            }
-            else{
-                return new Move(move.getGameState(),-1000000000,moveNotation,move.getMoveList());
-            }
-        }
-        else if(evaluator.checkTie(move.getGameState())){
+        if(evaluator.checkTie(move.getGameState())){
             return new Move(move.getGameState(),0,moveNotation,move.getMoveList());
         }
         else if(depth==0){
@@ -70,9 +62,18 @@ public class Bot {
             System.out.println(states.get(x).getMoveList().get(states.get(x).getMoveList().size()-1));
             System.out.println(states.get(x).getMoveList());
             System.out.println("------------------------------------------------------------------------------------------------------------------------");
-        }*/
-
+        }
+*/
         if(states.size()==0) {
+            List<Move> possibleCheckMate = getAllPossiblePositions(move.getGameState(),!turn,move.getMoveList(),true);
+            if(isCheckMate(possibleCheckMate)){
+                if(turn){
+                    return new Move(move.getGameState(),-1000000000,moveNotation,move.getMoveList());
+                }
+                else{
+                    return new Move(move.getGameState(),1000000000,moveNotation,move.getMoveList());
+                }
+            }
             return new Move(move.getGameState(), 0, moveNotation, move.getMoveList());
         }
 
@@ -118,6 +119,15 @@ public class Bot {
     }
 
 
+    public boolean isCheckMate(List<Move> possibleCheckMate){
+        for(int x=0; x<possibleCheckMate.size(); x++){
+            if(possibleCheckMate.get(x).getKingCaptured()!=0){
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void filterPossibleMoves(List<Move> states,boolean turn){
         for(int x=0; x<states.size(); x++) {
             if (!checkLegalMove(states.get(x).getGameState(), turn, states.get(x).getMoveList().get(states.get(x).getMoveList().size()-1))) {
@@ -131,7 +141,10 @@ public class Bot {
         List<String> notation = Arrays.asList(s);
         List<Move> nextPossibleMoves = getAllPossiblePositions(gameBoard,!player,notation,false);
         for(int a=0; a<nextPossibleMoves.size(); a++){
-            if(nextPossibleMoves.get(a).getKingCaptured()!=0){
+            if(player && nextPossibleMoves.get(a).getKingCaptured()==-1){
+                return false;
+            }
+            else if(!player && nextPossibleMoves.get(a).getKingCaptured()==1){
                 return false;
             }
         }
