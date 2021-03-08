@@ -84,7 +84,6 @@ public class GenerateBoard{
                 int yPosition = getNotationConverter().getNotationColumn().indexOf(notation.get(x).charAt(0));
                 int xEndPosition = getNotationConverter().getXPosition(notation.get(x).charAt(4));
                 int yEndPosition = getNotationConverter().getNotationColumn().indexOf(notation.get(x).charAt(3));
-
                 if (getGameBoard()[xPosition][yPosition] instanceof Pawn) {
                     if(xEndPosition==0 || xEndPosition==getGameBoard().length){
                         pawnPromotion(notation.get(x),xPosition,yPosition,xEndPosition,yEndPosition);
@@ -129,7 +128,7 @@ public class GenerateBoard{
                     King king = new King(getGameBoard()[xPosition][yPosition].getPlayerPiece());
                     king.setMoved(true);
                     getGameBoard()[xEndPosition][yEndPosition] = king;
-                    if((yPosition-yEndPosition)%2==0){
+                    if((yPosition-yEndPosition)%2==0 && xPosition==xEndPosition){
                         Rook rook = new Rook(getGameBoard()[xPosition][yPosition].getPlayerPiece());
                         rook.setMoved(true);
                         if(yPosition>yEndPosition){

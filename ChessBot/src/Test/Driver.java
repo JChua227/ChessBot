@@ -22,7 +22,7 @@ public class Driver{
             tempBot.printBoard(tempMove.getGameState());
             System.out.println("----------------------------------------------------------------------------------------------");
             Bot bot = new Bot();
-            Move move = bot.getNextMove(list,3);
+            Move move = bot.getNextMove(list,4);
             list.add(move.getNextMove());
             System.out.println(move.getNextMove() + " " + evaluation);
             evaluation = move.getEvaluation();

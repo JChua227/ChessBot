@@ -111,6 +111,7 @@ public class Pawn extends Piece{
             possiblePosition1[x + forward][y + yIncrementer] = queen;
             List<String> newNotation1 = this.generateNewNotation(notation, x, y, x + forward, y + yIncrementer, "=Q");
             Move move1 = new Move(x, y, x + forward, y + yIncrementer, possiblePosition1, newNotation1);
+            move1.setKingCaptured(isEnemyKing(gameBoard,x+forward,y+yIncrementer));
             list.add(move1);
 
             Piece[][] possiblePosition2 = this.copy(gameBoard);
@@ -120,6 +121,7 @@ public class Pawn extends Piece{
             possiblePosition2[x + forward][y + yIncrementer] = rook;
             List<String> newNotation2 = this.generateNewNotation(notation, x, y, x + forward, y + yIncrementer, "=R");
             Move move2 = new Move(x, y, x + forward, y + yIncrementer, possiblePosition2, newNotation2);
+            move2.setKingCaptured(isEnemyKing(gameBoard,x+forward,y+yIncrementer));
             list.add(move2);
 
             Piece[][] possiblePosition3 = this.copy(gameBoard);
@@ -129,6 +131,7 @@ public class Pawn extends Piece{
             possiblePosition3[x + forward][y + yIncrementer] = knight;
             List<String> newNotation3 = this.generateNewNotation(notation, x, y, x + forward, y + yIncrementer, "=N");
             Move move3 = new Move(x, y, x + forward, y + yIncrementer, possiblePosition3, newNotation3);
+            move3.setKingCaptured(isEnemyKing(gameBoard,x+forward,y+yIncrementer));
             list.add(move3);
 
             Piece[][] possiblePosition4 = this.copy(gameBoard);
@@ -138,6 +141,7 @@ public class Pawn extends Piece{
             possiblePosition4[x + forward][y + yIncrementer] = bishop;
             List<String> newNotation4 = this.generateNewNotation(notation, x, y, x + forward, y + yIncrementer, "=B");
             Move move4 = new Move(x, y, x + forward, y + yIncrementer, possiblePosition4, newNotation4);
+            move4.setKingCaptured(isEnemyKing(gameBoard,x+forward,y+yIncrementer));
             list.add(move4);
 
     }

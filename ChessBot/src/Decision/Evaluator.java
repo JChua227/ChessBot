@@ -212,8 +212,8 @@ public class Evaluator{
         return newArray;
     }
 
-    public int evaluate(Piece[][]gameBoard){
-        int total = 0;
+    public int evaluate(Piece[][]gameBoard,int amountOfMoves){
+        int total = amountOfMoves;
         total += sumStaticPosition(gameBoard);
         total += sumPositionalWorth(gameBoard);
 
@@ -223,8 +223,8 @@ public class Evaluator{
 
 
 
-    public Move evaluatePosition(Move move, String nextMove){
-        return new Move(move.getGameState(), evaluate(move.getGameState()), nextMove,move.getMoveList());
+    public Move evaluatePosition(Move move, String nextMove, int amountOfMoves){
+        return new Move(move.getGameState(), evaluate(move.getGameState(),amountOfMoves), nextMove,move.getMoveList());
     }
 
     public int sumStaticPosition(Piece [][]gameBoard){
