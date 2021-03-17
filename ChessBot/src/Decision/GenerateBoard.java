@@ -2,6 +2,8 @@ package Decision;
 
 import Pieces.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class GenerateBoard{
@@ -73,8 +75,7 @@ public class GenerateBoard{
         gameBoard[0][4] = new King(false);
     }
 
-
-    //ASSUMING player is playing moves within rules, it is able to translate it accordingly
+    
     public void playMoves(List<String> notation){
         this.notation = notation;
 
@@ -89,6 +90,13 @@ public class GenerateBoard{
                 int yPosition = getNotationConverter().getNotationColumn().indexOf(notation.get(x).charAt(0));
                 int xEndPosition = getNotationConverter().getXPosition(notation.get(x).charAt(4));
                 int yEndPosition = getNotationConverter().getNotationColumn().indexOf(notation.get(x).charAt(3));
+
+                boolean turn = x%2==0?true:false;
+                if(!isValidMove(gameBoard,notation.get(x),turn)){
+                    System.out.println(notation.get(x) + " is not a valid move for this player.");
+                    System.exit(-1);
+                }
+
                 if (getGameBoard()[xPosition][yPosition] instanceof Pawn) {
                     if(xEndPosition==0 || xEndPosition==getGameBoard().length){
                         pawnPromotion(notation.get(x),xPosition,yPosition,xEndPosition,yEndPosition);
@@ -153,9 +161,56 @@ public class GenerateBoard{
             }
         }
         catch(Exception e){
-            System.out.println("Error: Incorrect syntax");
+            System.out.println("Something went wrong in user input...");
             System.exit(-1);
         }
+    }
+
+    public boolean isValidMove(Piece[][]gameBoard,String nextMove,boolean turn){
+        List<String> tempNotation = new ArrayList<>();
+        List<Move> states = getAllPossiblePositions(gameBoard,turn,tempNotation,true);
+        filterPossibleMoves(states,turn);
+        for(int x=0; x<states.size(); x++){
+            if(states.get(x).getMoveList().get(states.get(x).getMoveList().size()-1).equals(nextMove)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void filterPossibleMoves(List<Move> states,boolean turn){
+        for(int x=0; x<states.size(); x++) {
+            if (!checkLegalMove(states.get(x).getGameState(), turn, states.get(x).getMoveList().get(states.get(x).getMoveList().size()-1))) {
+                states.remove(x);
+                x--;
+            }
+        }
+    }
+
+    public boolean checkLegalMove(Piece[][] gameBoard,boolean player, String s){
+        List<String> notation = Arrays.asList(s);
+        List<Move> nextPossibleMoves = getAllPossiblePositions(gameBoard,!player,notation,false);
+        for(int a=0; a<nextPossibleMoves.size(); a++){
+            if(player && nextPossibleMoves.get(a).getKingCaptured()==-1){
+                return false;
+            }
+            else if(!player && nextPossibleMoves.get(a).getKingCaptured()==1){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public List<Move> getAllPossiblePositions(Piece[][]gameBoard,boolean player,List<String> notation,boolean validMoveChecker){
+        List<Move> list = new ArrayList<>();
+        for(int x=0; x<gameBoard.length; x++){
+            for(int y=0; y<gameBoard[0].length; y++){
+                if(gameBoard[x][y]!=null && player==gameBoard[x][y].getPlayerPiece()){
+                    list.addAll(gameBoard[x][y].getPossibleMoves(gameBoard, x, y, notation,validMoveChecker));
+                }
+            }
+        }
+        return list;
     }
 
     public void pawnPromotion(String s,int xPosition, int yPosition, int xEndPosition, int yEndPosition){

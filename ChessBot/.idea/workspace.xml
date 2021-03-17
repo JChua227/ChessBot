@@ -3,16 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="dddfbc49-8f15-41f5-ba19-8fdd95a02b3e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ChessBot/Decision/Evaluator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ChessBot/Decision/Evaluator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ChessBot/Decision/Bot.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ChessBot/Decision/Bot.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ChessBot/Decision/GenerateBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ChessBot/Decision/GenerateBoard.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ChessBot/Test/Driver.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ChessBot/Test/Driver.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Decision/Bot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Decision/Bot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Decision/Evaluator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Decision/Evaluator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Decision/GenerateBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Decision/GenerateBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pieces/Bishop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pieces/Bishop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pieces/Knight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pieces/Knight.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pieces/Queen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pieces/Queen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pieces/Rook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pieces/Rook.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Test/Driver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Test/Driver.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -99,22 +94,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1614723310462" />
-    <state width="1877" height="320" key="GridCell.Tab.0.bottom" timestamp="1616003693920">
+    <state width="1877" height="249" key="GridCell.Tab.0.bottom" timestamp="1616013668119">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="320" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1616003693920" />
-    <state width="1877" height="320" key="GridCell.Tab.0.center" timestamp="1616003693920">
+    <state width="1877" height="249" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1616013668119" />
+    <state width="1877" height="249" key="GridCell.Tab.0.center" timestamp="1616013668119">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="320" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1616003693920" />
-    <state width="1877" height="320" key="GridCell.Tab.0.left" timestamp="1616003693920">
+    <state width="1877" height="249" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1616013668119" />
+    <state width="1877" height="249" key="GridCell.Tab.0.left" timestamp="1616013668119">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="320" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1616003693920" />
-    <state width="1877" height="320" key="GridCell.Tab.0.right" timestamp="1616003693920">
+    <state width="1877" height="249" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1616013668119" />
+    <state width="1877" height="249" key="GridCell.Tab.0.right" timestamp="1616013668119">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="320" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1616003693920" />
+    <state width="1877" height="249" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1616013668119" />
     <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1615259356720">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

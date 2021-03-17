@@ -152,7 +152,7 @@ public class Bot {
     }
 
 
-    public static List<Move> getAllPossiblePositions(Piece[][]gameBoard,boolean player,List<String> notation,boolean validMoveChecker){
+    public List<Move> getAllPossiblePositions(Piece[][]gameBoard,boolean player,List<String> notation,boolean validMoveChecker){
         List<Move> list = new ArrayList<>();
         for(int x=0; x<gameBoard.length; x++){
             for(int y=0; y<gameBoard[0].length; y++){
@@ -164,7 +164,7 @@ public class Bot {
         return list;
     }
 
-    public static void printBoard(Piece[][]gameBoard){
+    public void printBoard(Piece[][]gameBoard){
         for(int x=0; x<gameBoard.length; x++){
             for(int y=0; y<gameBoard[0].length; y++){
                 if(gameBoard[x][y] instanceof Piece){
