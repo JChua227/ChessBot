@@ -3,6 +3,7 @@ package Decision;
 import Pieces.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /*
@@ -212,36 +213,78 @@ public class Evaluator{
         return newArray;
     }
 
-    public int evaluate(Piece[][]gameBoard,int amountOfMoves){
-        int total = amountOfMoves;
-        total += sumStaticPosition(gameBoard);
+    public int evaluate(Piece[][]gameBoard){
+        int total = 0;
+        total += sumStaticPositionAndKingRadius(gameBoard,piecesAroundKing(gameBoard));
         total += sumPositionalWorth(gameBoard);
-
 
         return total;
     }
 
+    public List<int[][]> piecesAroundKing(Piece[][] gameBoard){
+        int []whiteKingPosition = findingKing(gameBoard,true);
+        int []blackKingPosition = findingKing(gameBoard,false);
 
+        int [][]whiteKing = kingRadiusPoints(gameBoard,whiteKingPosition[0], whiteKingPosition[1],10);
+        int [][]blackKing = kingRadiusPoints(gameBoard,blackKingPosition[0], blackKingPosition[1],10);
 
-    public Move evaluatePosition(Move move, String nextMove, int amountOfMoves){
-        return new Move(move.getGameState(), evaluate(move.getGameState(),amountOfMoves), nextMove,move.getMoveList());
+        List<int[][]> kingRadius = Arrays.asList(whiteKing,blackKing);
+        return kingRadius;
     }
 
-    public int sumStaticPosition(Piece [][]gameBoard){
+    public int[] findingKing(Piece[][] gameBoard,boolean player){
+        int []kingPosition = new int[2];
+        for(int x=0; x<gameBoard.length; x++){
+            for(int y=0; y<gameBoard[0].length; y++){
+                if(gameBoard[x][y] instanceof King && gameBoard[x][y].getPlayerPiece()==player){
+                    kingPosition[0]=x;
+                    kingPosition[1]=y;
+                    return kingPosition;
+                }
+            }
+        }
+        return kingPosition;
+    }
+
+    public static int[][] kingRadiusPoints(Piece [][]gameBoard, int kingX, int kingY, int valueFromStart){
+        int [][]kingRadiusPoints = new int[gameBoard.length][gameBoard[0].length];
+        for(int x=0; x<kingRadiusPoints.length; x++){
+            for(int y=0; y<kingRadiusPoints[0].length; y++){
+                int temp1 = Math.abs(x-kingX);
+                int temp2 = Math.abs(y-kingY);
+                if(temp1>temp2){
+                    kingRadiusPoints[x][y] = valueFromStart-temp1;
+                }
+                else{
+                    kingRadiusPoints[x][y] = valueFromStart-temp2;
+                }
+            }
+        }
+        return kingRadiusPoints;
+    }
+
+    public Move evaluatePosition(Move move, String nextMove){
+        return new Move(move.getGameState(), evaluate(move.getGameState()), nextMove,move.getMoveList());
+    }
+
+    public int sumStaticPositionAndKingRadius(Piece [][]gameBoard, List<int[][]>kingRadius){
         int pieceCountWorth = 0;
+        int piecePositionToEnemyKing = 0;
         for(int x=0; x<gameBoard.length; x++){
             for(int y=0; y<gameBoard[0].length; y++){
                 if(gameBoard[x][y] instanceof Piece){
                     if(gameBoard[x][y].getPlayerPiece()){
                         pieceCountWorth += gameBoard[x][y].getPieceWorth();
+                        piecePositionToEnemyKing += kingRadius.get(1)[x][y];
                     }
                     else{
                         pieceCountWorth -= gameBoard[x][y].getPieceWorth();
+                        piecePositionToEnemyKing -= kingRadius.get(0)[x][y];
                     }
                 }
             }
         }
-        return pieceCountWorth;
+        return pieceCountWorth+piecePositionToEnemyKing;
     }
 
     public int sumPositionalWorth(Piece [][]gameBoard){

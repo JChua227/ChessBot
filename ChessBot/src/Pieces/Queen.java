@@ -7,7 +7,7 @@ import java.util.*;
 public class Queen extends Piece{
 
     public Queen(boolean playerPiece){
-        super(playerPiece,1000);
+        super(playerPiece,970);
     }
 
     public String toString(){

@@ -7,7 +7,7 @@ import java.util.*;
 public class Rook extends Piece{
 
     public Rook(boolean playerPiece){
-        super(playerPiece,500);
+        super(playerPiece,563);
     }
 
     public String toString(){

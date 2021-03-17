@@ -14,6 +14,8 @@ public class Driver{
 
         List<String> list = new ArrayList<>();
 
+
+
         //bot plays against itself
         /*double evaluation = 0;
         while(evaluation!=1000000000 || evaluation!=-1000000000){

@@ -80,6 +80,11 @@ public class GenerateBoard{
 
         try {
             for (int x = 0; x < notation.size(); x++) {
+                if(notation.get(x).equals("")){
+                    notation.remove(x);
+                    x--;
+                    continue;
+                }
                 int xPosition = getNotationConverter().getXPosition(notation.get(x).charAt(1));
                 int yPosition = getNotationConverter().getNotationColumn().indexOf(notation.get(x).charAt(0));
                 int xEndPosition = getNotationConverter().getXPosition(notation.get(x).charAt(4));

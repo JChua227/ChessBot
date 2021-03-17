@@ -7,7 +7,7 @@ import java.util.*;
 public class Knight extends Piece{
 
     public Knight(boolean playerPiece){
-        super(playerPiece,300);
+        super(playerPiece,305);
     }
 
     public String toString(){
