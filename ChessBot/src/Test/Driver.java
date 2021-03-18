@@ -14,6 +14,7 @@ public class Driver{
 
         List<String> list = new ArrayList<>();
 
+
         //bot plays against itself
         /*double evaluation = 0;
         while(evaluation!=1000000000 || evaluation!=-1000000000){
@@ -28,7 +29,21 @@ public class Driver{
             evaluation = move.getEvaluation();
         }*/
 
-        Bot bot = new Bot();
+        //shows list of moves it believes are best in order from given depth
+        /*List<String> unallowedMoves = new ArrayList<>();
+        double evaluation = 0;
+        while(evaluation<1000000000 || evaluation>-1000000000){
+            List<String> tempList = new ArrayList<>(list);
+            Bot bot = new Bot(unallowedMoves);
+            Move move = bot.getNextMove(list,5);
+            list = new ArrayList<>(tempList);
+            System.out.println(move.getNextMove() + " " + evaluation);
+            unallowedMoves.add(move.getNextMove());
+            evaluation = move.getEvaluation();
+        }*/
+
+        //finds next best move
+        /*Bot bot = new Bot();
         Move move = bot.getNextMove(list,0);
         bot.printBoard(move.getGameState());
         System.out.println("----------------------------------------------------------------------------------------------");
@@ -38,7 +53,7 @@ public class Driver{
         System.out.println(move.getNextMove());
         double evaluation = move.getEvaluation();
         System.out.println("Evaluation: " + evaluation);
-        System.out.println(move.getMoveList());
+        System.out.println(move.getMoveList());*/
     }
 
 }

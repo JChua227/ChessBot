@@ -11,6 +11,13 @@ public class Bot {
     private Evaluator evaluator;
     private GenerateBoard generateBoard = new GenerateBoard();
     private int depth;
+    private List<String> unallowedMoves;
+
+    public Bot(List<String> unallowedMoves){
+        evaluator = new Evaluator();
+        this.generateBoard.create();
+        this.unallowedMoves = unallowedMoves;
+    }
 
     public Bot(){
         evaluator = new Evaluator();
@@ -55,6 +62,12 @@ public class Bot {
 
         List<Move> states = getAllPossiblePositions(move.getGameState(),turn,move.getMoveList(),true);
         filterPossibleMoves(states,turn);
+        if(this.depth==depth){
+            if(!unallowedMoves.isEmpty()){
+                filterUnallowedMoves(states,unallowedMoves);
+            }
+        }
+
 
         //visually seeing all positions generated
         /*for(int x=0; x<states.size(); x++){
@@ -116,6 +129,17 @@ public class Bot {
             return minEval;
         }
 
+    }
+
+    public void filterUnallowedMoves(List<Move> states, List<String> unallowedMoves){
+        for(int x=0; x<unallowedMoves.size(); x++){
+            for(int y=0; y<states.size(); y++){
+                if(states.get(y).getMoveList().get(states.get(y).getMoveList().size()-1).equals(unallowedMoves.get(x))){
+                    states.remove(y);
+                    y=states.size();
+                }
+            }
+        }
     }
 
 
