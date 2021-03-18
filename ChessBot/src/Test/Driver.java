@@ -16,18 +16,18 @@ public class Driver{
 
 
         //bot plays against itself
-        /*double evaluation = 0;
+        double evaluation = 0;
         while(evaluation!=1000000000 || evaluation!=-1000000000){
             Bot tempBot = new Bot();
             Move tempMove = tempBot.getNextMove(list,0);
             tempBot.printBoard(tempMove.getGameState());
             System.out.println("----------------------------------------------------------------------------------------------");
             Bot bot = new Bot();
-            Move move = bot.getNextMove(list,4);
+            Move move = bot.getNextMove(list,5);
             list.add(move.getNextMove());
             System.out.println(move.getNextMove() + " " + evaluation);
             evaluation = move.getEvaluation();
-        }*/
+        }
 
         //shows list of moves it believes are best in order from given depth
         /*List<String> unallowedMoves = new ArrayList<>();

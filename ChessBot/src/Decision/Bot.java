@@ -11,7 +11,7 @@ public class Bot {
     private Evaluator evaluator;
     private GenerateBoard generateBoard = new GenerateBoard();
     private int depth;
-    private List<String> unallowedMoves;
+    private List<String> unallowedMoves = new ArrayList<>();
 
     public Bot(List<String> unallowedMoves){
         evaluator = new Evaluator();
@@ -63,7 +63,7 @@ public class Bot {
         List<Move> states = getAllPossiblePositions(move.getGameState(),turn,move.getMoveList(),true);
         filterPossibleMoves(states,turn);
         if(this.depth==depth){
-            if(!unallowedMoves.isEmpty()){
+            if(unallowedMoves.isEmpty()){
                 filterUnallowedMoves(states,unallowedMoves);
             }
         }
