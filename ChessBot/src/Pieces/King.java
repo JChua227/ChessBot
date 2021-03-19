@@ -36,7 +36,7 @@ public class King extends Piece{
         return list;
     }
 
-
+    //TODO: cant castle when checked
     public void castle(List<Move> list, int x, int y, int direction, Piece[][]gameBoard,List<String> notation,boolean validMoveChecker){
         if(gameBoard[x][y+direction]==null && gameBoard[x][y+direction+direction]==null){
             if(y+direction+direction+direction<4 && gameBoard[x][y+direction+direction+direction]!=null){
@@ -75,6 +75,7 @@ public class King extends Piece{
         List<String> notation = Arrays.asList(s);
         List<Move> nextPossibleMoves = getAllPossiblePositions(gameBoard,!gameBoard[x][y].getPlayerPiece(),notation,false);
         List<String> list = new ArrayList<>();
+        list.add(getNotation(x,y,x,y,"").split("-",2)[1]);
         list.add(getNotation(x,y,x,y+direction,"").split("-",2)[1]);
         list.add(getNotation(x,y,x,y+direction+direction,"").split("-",2)[1]);
 
