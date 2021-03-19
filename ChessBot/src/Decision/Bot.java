@@ -63,7 +63,7 @@ public class Bot {
         List<Move> states = getAllPossiblePositions(move.getGameState(),turn,move.getMoveList(),true);
         filterPossibleMoves(states,turn);
         if(this.depth==depth){
-            if(unallowedMoves.isEmpty()){
+            if(!unallowedMoves.isEmpty()){
                 filterUnallowedMoves(states,unallowedMoves);
             }
         }
