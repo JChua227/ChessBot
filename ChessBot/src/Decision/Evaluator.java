@@ -91,7 +91,7 @@ public class Evaluator{
     public void setWhiteRookWorth(){
         this.whiteRookWorth = new int[][]{
                 {0, 0, 0, 0, 0, 0, 0, 0},
-                {5, 10, 10, 10, 10, 10, 10, 5},
+                {5, 11, 11, 11, 11, 11, 11, 5},
                 {-5, 0, 0, 0, 0, 0, 0, -5},
                 {-5, 0, 0, 0, 0, 0, 0, -5},
                 {-5, 0, 0, 0, 0, 0, 0, -5},
@@ -114,14 +114,14 @@ public class Evaluator{
 
     public void setWhiteKnightWorth(){
         this.whiteKnightWorth = new int[][]{
-                {-30, -20, -1, -1, -1, -1, 20, -30},
-                {-20, -8, -5, 2, 2, -5, -8, -20},
-                {-10, -2, 10, 15, 15, 10, -2, -10},
+                {-50, -40, -30, -1, -1, -30, -40, -50},
+                {-40, -20, 0, 2, 2, 0, -20, -40},
+                {-30, 3, 10, 15, 15, 10, 3, -30},
                 {-10, 2, 20, 25, 25, 20, 2, -10},
                 {-10, 2, 20, 25, 25, 20, 2, -10},
-                {-10, -2, 10, 20, 20, 10, -2, -10},
-                {-20, -8, -5, 2, 2, -5, -8, -20},
-                {-30, -20, -10, -10, -10, -10, -20, -30}};
+                {-30, 3, 10, 20, 20, 10, 3, -30},
+                {-40, -20, 0, 2, 2, 0, -20, -40},
+                {-50, -40, -30, -20, -20, -30, -40, -50}};
     }
 
     public int[][] getWhiteBishopWorth(){
@@ -215,18 +215,18 @@ public class Evaluator{
 
     public int evaluate(Piece[][]gameBoard){
         int total = 0;
-        total += sumStaticPositionAndKingRadius(gameBoard,piecesAroundKing(gameBoard));
+        total += sumStaticPositionAndKingRadius(gameBoard,piecesAroundKing(gameBoard,22));
         total += sumPositionalWorth(gameBoard);
 
         return total;
     }
 
-    public List<int[][]> piecesAroundKing(Piece[][] gameBoard){
+    public List<int[][]> piecesAroundKing(Piece[][] gameBoard, int startingValue){
         int []whiteKingPosition = findingKing(gameBoard,true);
         int []blackKingPosition = findingKing(gameBoard,false);
 
-        int [][]whiteKing = kingRadiusPoints(gameBoard,whiteKingPosition[0], whiteKingPosition[1],10);
-        int [][]blackKing = kingRadiusPoints(gameBoard,blackKingPosition[0], blackKingPosition[1],10);
+        int [][]whiteKing = kingRadiusPoints(gameBoard,whiteKingPosition[0], whiteKingPosition[1],startingValue);
+        int [][]blackKing = kingRadiusPoints(gameBoard,blackKingPosition[0], blackKingPosition[1],startingValue);
 
         List<int[][]> kingRadius = Arrays.asList(whiteKing,blackKing);
         return kingRadius;
