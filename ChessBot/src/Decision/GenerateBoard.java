@@ -91,7 +91,7 @@ public class GenerateBoard{
                 int yEndPosition = getNotationConverter().getNotationColumn().indexOf(notation.get(x).charAt(3));
 
                 boolean turn = x%2==0?true:false;
-                if(!isValidMove(gameBoard,notation.get(x),turn)){
+                if(!isValidMove(gameBoard,notation,x,turn)){
                     System.out.println(notation.get(x) + " is not a valid move for this player.");
                     System.exit(-1);
                 }
@@ -156,12 +156,16 @@ public class GenerateBoard{
 
     }
 
-    public boolean isValidMove(Piece[][]gameBoard,String nextMove,boolean turn){
-        List<String> tempNotation = Arrays.asList(nextMove);
+    public boolean isValidMove(Piece[][]gameBoard,List<String>notation,int index,boolean turn){
+        List<String> tempNotation = new ArrayList<>();
+        if(index>0){
+            tempNotation = Arrays.asList(notation.get(index-1));
+        }
+
         List<Move> states = getAllPossiblePositions(gameBoard,turn,tempNotation,true);
         filterPossibleMoves(states,turn);
         for(int x=0; x<states.size(); x++){
-            if(states.get(x).getMoveList().get(states.get(x).getMoveList().size()-1).equals(nextMove)){
+            if(states.get(x).getMoveList().get(states.get(x).getMoveList().size()-1).equals(notation.get(index))){
                 return true;
             }
         }
@@ -196,7 +200,7 @@ public class GenerateBoard{
         for(int x=0; x<gameBoard.length; x++){
             for(int y=0; y<gameBoard[0].length; y++){
                 if(gameBoard[x][y]!=null && player==gameBoard[x][y].getPlayerPiece()){
-                    list.addAll(gameBoard[x][y].getPossibleMoves(gameBoard, x, y, notation,validMoveChecker));
+                    list.addAll(gameBoard[x][y].getPossibleMoves(gameBoard, x, y, notation, validMoveChecker));
                 }
             }
         }
