@@ -97,7 +97,7 @@ public class GenerateBoard{
                 }
 
                 if (getGameBoard()[xPosition][yPosition] instanceof Pawn) {
-                    if(xEndPosition==0 || xEndPosition==getGameBoard().length){
+                    if(xEndPosition==0 || xEndPosition==getGameBoard().length-1){
                         pawnPromotion(notation.get(x),xPosition,yPosition,xEndPosition,yEndPosition);
                     }
                     else {
