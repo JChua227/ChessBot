@@ -213,12 +213,82 @@ public class Evaluator{
         return newArray;
     }
 
-    public int evaluate(Piece[][]gameBoard){
+    public int evaluate(Piece[][] gameBoard){
         int total = 0;
         total += sumStaticPositionAndKingRadius(gameBoard,piecesAroundKing(gameBoard,22));
         total += sumPositionalWorth(gameBoard);
+        total += pawnChain(gameBoard);
 
         return total;
+    }
+
+    public int pawnChain(Piece[][] gameBoard){
+        int whiteValue = 0;
+        int blackValue = 0;
+        for(int x=0; x<gameBoard.length; x++){
+            for(int y=0; y<gameBoard[0].length; y++){
+                if(gameBoard[x][y] instanceof Pawn){
+                    if(gameBoard[x][y].getPlayerPiece() && whiteValue==0){
+                        whiteValue = getPawnChainWorth(gameBoard,x,y);
+                    }
+                    else if(!gameBoard[x][y].getPlayerPiece() && blackValue==0){
+                        blackValue = getPawnChainWorth(gameBoard,x,y);
+                    }
+                }
+            }
+        }
+        return whiteValue-blackValue;
+    }
+
+    public int getPawnChainWorth(Piece[][] gameBoard, int x, int y){
+        int [][]array = new int[gameBoard.length][gameBoard[0].length];
+        for(int a=0; a<gameBoard.length; a++){
+            for(int b=0; b<gameBoard[0].length; b++){
+                if(gameBoard[a][b] instanceof Pawn && gameBoard[a][b].getPlayerPiece()==gameBoard[x][y].getPlayerPiece()){
+                    array[a][b]=1;
+                }
+            }
+        }
+
+        return pawnChainWorth(numberOfPawnChainIslands(array));
+    }
+
+    public int pawnChainWorth(List<Integer> list){
+        int total = 0;
+        for(int x=0; x<list.size(); x++){
+            total += ((list.get(x)-1)*list.get(x)*(list.get(x)+1))/1.4;
+        }
+        return total;
+    }
+
+    public List<Integer> numberOfPawnChainIslands(int [][]array){
+        List<Integer> list = new ArrayList<>();
+
+        for(int x=0; x<array.length; x++){
+            for(int y=0; y<array[0].length; y++){
+                if(array[x][y]!=0){
+                    list.add(0);
+                    deletePawnChain(list,array,x,y);
+                }
+            }
+        }
+
+        return list;
+    }
+
+    public void deletePawnChain(List<Integer> list,int [][]array,int x, int y){
+        if(x<0 || x>array.length-1 || y<0 || y>array[0].length-1 || array[x][y]==0){
+            return;
+        }
+        else{
+            list.set(list.size()-1,list.get(list.size()-1)+1);
+        }
+
+        array[x][y]=0;
+        deletePawnChain(list,array,x+1,y+1);
+        deletePawnChain(list,array,x-1,y+1);
+        deletePawnChain(list,array,x+1,y-1);
+        deletePawnChain(list,array,x-1,y-1);
     }
 
     public List<int[][]> piecesAroundKing(Piece[][] gameBoard, int startingValue){
