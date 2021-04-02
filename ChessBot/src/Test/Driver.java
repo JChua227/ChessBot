@@ -14,20 +14,28 @@ public class Driver{
 
         List<String> list = new ArrayList<>();
 
+        list.add("");
+        list.add("");
+        list.add("");
+        list.add("");
+        list.add("");
+        list.add("");
+        list.add("");
 
         //bot plays against itself
-        double evaluation = 0;
-        while(evaluation!=1000000000 || evaluation!=-1000000000){
+        /*double evaluation = 0;
+        while(evaluation<1000000000 && evaluation>-1000000000){
             Bot tempBot = new Bot();
             Move tempMove = tempBot.getNextMove(list,0);
             tempBot.printBoard(tempMove.getGameState());
             System.out.println("----------------------------------------------------------------------------------------------");
             Bot bot = new Bot();
-            Move move = bot.getNextMove(list,5);
+            Move move = bot.getNextMove(list,4);
             list.add(move.getNextMove());
             System.out.println(move.getNextMove() + " " + evaluation);
             evaluation = move.getEvaluation();
-        }
+            System.out.println(list);
+        }*/
 
         //shows list of moves it believes are best in order from given depth
         /*List<String> unallowedMoves = new ArrayList<>();
@@ -43,17 +51,17 @@ public class Driver{
         }*/
 
         //finds next best move
-        /*Bot bot = new Bot();
+        Bot bot = new Bot();
         Move move = bot.getNextMove(list,0);
         bot.printBoard(move.getGameState());
         System.out.println("----------------------------------------------------------------------------------------------");
         Bot futureBot = new Bot();
-        move = futureBot.getNextMove(list,4);
+        move = futureBot.getNextMove(list,5);
         futureBot.printBoard(move.getGameState());
         System.out.println(move.getNextMove());
         double evaluation = move.getEvaluation();
         System.out.println("Evaluation: " + evaluation);
-        System.out.println(move.getMoveList());*/
+        System.out.println(move.getMoveList());
     }
 
 }

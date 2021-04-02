@@ -27,13 +27,14 @@ public class Bot {
     public Move getNextMove(List<String> notation,int depth){
         this.depth = depth;
 
+        this.generateBoard.playMoves(notation);
+
         boolean turn = false;
         if(notation.size()%2==0){
             turn = true;
         }
 
         Move move = new Move(this.generateBoard.getGameBoard(),0,"", notation);
-        this.generateBoard.playMoves(notation);
 
         if(move.getKingCaptured()!=0){
             if(move.getKingCaptured()==1){
@@ -47,7 +48,9 @@ public class Bot {
             return new Move(move.getGameState(),0,"Its a tie!");
         }
 
+
         return miniMax(move, depth, turn, -2000000000, 2000000000, "");
+
     }
 
 

@@ -70,7 +70,7 @@ public class Evaluator{
                 {50, 50, 50, 50, 50, 50, 50, 50},
                 {10, 10, 20, 30, 30, 20, 10, 10},
                 {5, 5, 10, 22, 22, 10, 5, 5},
-                {0, 0, 0, 20, 20, 0, 0, 0},
+                {0, 0, 0, 20, 26, 0, 0, 0},
                 {5, -4, -10, 0, 0, -10, -4, 0},
                 {5, 10, 10, -20, -20, 10, 10, 5},
                 {0, 0, 0, 0, 0, 0, 0, 0}};
@@ -256,7 +256,7 @@ public class Evaluator{
     public int pawnChainWorth(List<Integer> list){
         int total = 0;
         for(int x=0; x<list.size(); x++){
-            total += ((list.get(x)-1)*list.get(x)*(list.get(x)+1))/1.4;
+            total += ((list.get(x)-1)*list.get(x)*(list.get(x)+1))/1.8;
         }
         return total;
     }
@@ -264,7 +264,7 @@ public class Evaluator{
     public List<Integer> numberOfPawnChainIslands(int [][]array){
         List<Integer> list = new ArrayList<>();
 
-        for(int x=0; x<array.length; x++){
+        for(int x=3; x<array.length-3; x++){
             for(int y=0; y<array[0].length; y++){
                 if(array[x][y]!=0){
                     list.add(0);
@@ -323,10 +323,10 @@ public class Evaluator{
                 int temp1 = Math.abs(x-kingX);
                 int temp2 = Math.abs(y-kingY);
                 if(temp1>temp2){
-                    kingRadiusPoints[x][y] = valueFromStart-temp1;
+                    kingRadiusPoints[x][y] = valueFromStart-(temp1*3);
                 }
                 else{
-                    kingRadiusPoints[x][y] = valueFromStart-temp2;
+                    kingRadiusPoints[x][y] = valueFromStart-(temp2*3);
                 }
             }
         }
