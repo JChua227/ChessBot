@@ -333,8 +333,8 @@ public class Evaluator{
         return kingRadiusPoints;
     }
 
-    public Move evaluatePosition(Move move, String nextMove){
-        return new Move(move.getGameState(), evaluate(move.getGameState()), nextMove,move.getMoveList());
+    public Move evaluatePosition(Move move, String nextMove,int numberOfMoves){
+        return new Move(move.getGameState(), evaluate(move.getGameState()), nextMove,move.getMoveList(),numberOfMoves);
     }
 
     public int sumStaticPositionAndKingRadius(Piece [][]gameBoard, List<int[][]>kingRadius){

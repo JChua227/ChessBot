@@ -12,6 +12,8 @@ public class Bot {
     private GenerateBoard generateBoard = new GenerateBoard();
     private int depth;
     private List<String> unallowedMoves = new ArrayList<>();
+    private List<String> allowedMoves = new ArrayList<>();
+
 
     public Bot(List<String> unallowedMoves){
         evaluator = new Evaluator();
@@ -34,7 +36,7 @@ public class Bot {
             turn = true;
         }
 
-        Move move = new Move(this.generateBoard.getGameBoard(),0,"", notation);
+        Move move = new Move(this.generateBoard.getGameBoard(),0,"", notation,0);
 
         if(move.getKingCaptured()!=0){
             if(move.getKingCaptured()==1){
@@ -49,18 +51,18 @@ public class Bot {
         }
 
 
-        return miniMax(move, depth, turn, -2000000000, 2000000000, "");
+        return miniMax(move, depth, turn, -2000000000, 2000000000, "",0);
 
     }
 
 
-    public Move miniMax(Move move, int depth, boolean turn, double alpha, double beta, String moveNotation){
+    public Move miniMax(Move move, int depth, boolean turn, double alpha, double beta, String moveNotation,int numberOfMoves){
 
         if(evaluator.checkTie(move.getGameState())){
-            return new Move(move.getGameState(),0,moveNotation,move.getMoveList());
+            return new Move(move.getGameState(),0,moveNotation,move.getMoveList(),numberOfMoves);
         }
         else if(depth==0){
-            return evaluator.evaluatePosition(move,moveNotation);
+            return evaluator.evaluatePosition(move,moveNotation,numberOfMoves);
         }
 
         List<Move> states = getAllPossiblePositions(move.getGameState(),turn,move.getMoveList(),true);
@@ -84,13 +86,13 @@ public class Bot {
             List<Move> possibleCheckMate = getAllPossiblePositions(move.getGameState(),!turn,move.getMoveList(),true);
             if(isCheckMate(possibleCheckMate)){
                 if(turn){
-                    return new Move(move.getGameState(),-1000000000-depth,moveNotation,move.getMoveList());
+                    return new Move(move.getGameState(),-1000000000-depth,moveNotation,move.getMoveList(),numberOfMoves);
                 }
                 else{
-                    return new Move(move.getGameState(),1000000000+depth,moveNotation,move.getMoveList());
+                    return new Move(move.getGameState(),1000000000+depth,moveNotation,move.getMoveList(),numberOfMoves);
                 }
             }
-            return new Move(move.getGameState(), 0, moveNotation, move.getMoveList());
+            return new Move(move.getGameState(), 0, moveNotation, move.getMoveList(),numberOfMoves);
         }
 
         if(turn){
@@ -98,8 +100,9 @@ public class Bot {
             for(int x=0; x<states.size(); x++){
                 if(depth==this.depth){
                     moveNotation = states.get(x).getMoveList().get(states.get(x).getMoveList().size()-1);
+                    numberOfMoves = states.size();
                 }
-                Move evaluation = miniMax(states.get(x),depth-1+states.get(x).getExtraTakePieceDepth(),!turn,alpha,beta,moveNotation);
+                Move evaluation = miniMax(states.get(x),depth-1+states.get(x).getExtraTakePieceDepth(),!turn,alpha,beta,moveNotation,numberOfMoves);
                 if(maxEval.getEvaluation()<evaluation.getEvaluation()){
                     maxEval = evaluation;
                 }
@@ -118,7 +121,7 @@ public class Bot {
                 if(depth==this.depth){
                     moveNotation = states.get(x).getMoveList().get(states.get(x).getMoveList().size()-1);
                 }
-                Move evaluation = miniMax(states.get(x),depth-1+states.get(x).getExtraTakePieceDepth(),!turn,alpha,beta,moveNotation);
+                Move evaluation = miniMax(states.get(x),depth-1+states.get(x).getExtraTakePieceDepth(),!turn,alpha,beta,moveNotation,numberOfMoves);
                 if(minEval.getEvaluation()>evaluation.getEvaluation()){
                     minEval = evaluation;
                 }

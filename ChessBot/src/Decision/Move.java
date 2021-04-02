@@ -18,6 +18,7 @@ public class Move {
     private String nextMove;
     private boolean validMove = true;
     private int kingCaptured;
+    private int numberOfMoves;
 
     public Move(int xSelectedPosition, int ySelectedPosition, int xLandedPosition, int yLandedPosition, Piece[][] gameState, int evaluation){
         this.xSelectedPosition = xSelectedPosition;
@@ -37,17 +38,22 @@ public class Move {
         this.moveList = moveList;
     }
 
-    public Move(Piece[][] gameState, int evaluation,String nextMove,List<String> moveList){
+    public Move(Piece[][] gameState, int evaluation,String nextMove,List<String> moveList,int numberOfMoves){
         this.gameState = gameState;
         this.evaluation = evaluation;
         this.nextMove = nextMove;
         this.moveList = moveList;
+        this.numberOfMoves = numberOfMoves;
     }
 
     public Move(Piece[][] gameState, int evaluation,String nextMove){
         this.gameState = gameState;
         this.evaluation = evaluation;
         this.nextMove = nextMove;
+    }
+
+    public Move(){
+
     }
 
     public int getXSelectedPosition(){
@@ -124,5 +130,9 @@ public class Move {
 
     public List<String> getMoveList(){
         return this.moveList;
+    }
+
+    public int getNumberOfMoves(){
+        return this.numberOfMoves;
     }
 }
